@@ -9,11 +9,11 @@ import org.junit.Test;
 
 public class FleetTest {
 	Die die;
-	Fleet fleet1;
-	Fleet fleet2;
-	Fleet fleet3;
-	Fleet fleet4;
-	FleetController fleetController;
+	OurShipping fleet1;
+	OurShipping fleet2;
+	OurShipping fleet3;
+	OurShipping fleet4;
+	OurShippingController fleetController;
 	GUIManager display;
 	Player player1;
 	Player player2;
@@ -21,11 +21,11 @@ public class FleetTest {
 	@Before
 	public void setUp(){
 		die = new Die();
-		fleet1 = new Fleet(4000, "skib", 1, 1);
-		fleet2 = new Fleet(4000, "båd", 2, 2);
-		fleet3 = new Fleet(4000, "Yacht", 3, 3);
-		fleet4 = new Fleet(4000, "Færge", 4, 4);
-		fleetController = new FleetController();
+		fleet1 = new OurShipping(4000, "skib", 1, 1);
+		fleet2 = new OurShipping(4000, "båd", 2, 2);
+		fleet3 = new OurShipping(4000, "Yacht", 3, 3);
+		fleet4 = new OurShipping(4000, "Færge", 4, 4);
+		fleetController = new OurShippingController();
 		display = new GUIManager("test", "", "Køb");
 		player1 = new Player(1, "Mathias");
 		player2 = new Player(2, "Victor");

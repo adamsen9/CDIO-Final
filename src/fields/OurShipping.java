@@ -1,10 +1,10 @@
 package fields;
 
-public class Fleet extends Ownable{
+public class OurShipping extends Ownable{
 
 	private int[] rent = {500,1000,2000,4000};
 	
-	public Fleet(int price, String name, int id, int possition){
+	public OurShipping(int price, String name, int id, int possition){
 		super.setPrice(price);
 		super.setName(name);
 		super.setFieldId(id);

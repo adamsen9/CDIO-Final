@@ -2,18 +2,18 @@ package controllers;
 
 import entities.Die;
 import entities.Player;
-import fields.Fleet;
+import fields.OurShipping;
 import fields.OurField;
 
-public class FleetController extends OwnableController {
-	private Fleet fleet;
-	public FleetController(){
+public class OurShippingController extends OwnableController {
+	private OurShipping fleet;
+	public OurShippingController(){
 		
 	}
 
 	@Override
 	public boolean landOnField(Player player, GUIManager display, OurField field, Die die) {
-		fleet = (Fleet) field;
+		fleet = (OurShipping) field;
 		if(fleet.isOwned()){
 			if(!isOwner(player, fleet)){
 					display.sendMessage(player.getName() + " er landet på " + fleet.getName() + " og skal betale " + fleet.getRent() + " kroner.");

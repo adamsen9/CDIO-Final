@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import controllers.TerritoryController;
+import controllers.OurStreetController;
 
 
 
@@ -30,9 +30,9 @@ import controllers.TerritoryController;
 				//Kontrollere om der efter ændring af positionen stadig returneres den forventede position af feltet
 
 public class RefugeTest {
-	OurRefuge refuge;
-	OurRefuge refuge2;
-	RefugeController refugeController;
+	OurParking refuge;
+	OurParking refuge2;
+	OurParkingController refugeController;
 	Die die;
 	Player player;
 	GUIManager display;
@@ -41,8 +41,8 @@ public class RefugeTest {
 	@Before
 	public void setUp(){
 		die = new Die();
-		refuge = new OurRefuge(500, "Monastery", 13, 12);
-		refugeController = new RefugeController();
+		refuge = new OurParking(500, "Monastery", 13, 12);
+		refugeController = new OurParkingController();
 		display = new GUIManager("test", "", "");
 		player = new Player();
 	}
@@ -66,7 +66,7 @@ public class RefugeTest {
 	@Test
 	public void testFieldPosition(){
 		//To refuge testes
-		refuge2 = new OurRefuge(800, "København", 18, 6);
+		refuge2 = new OurParking(800, "København", 18, 6);
 		assertEquals(refuge.getFieldPossition(), 12);
 		assertEquals(refuge2.getFieldPossition(), 6);
 		

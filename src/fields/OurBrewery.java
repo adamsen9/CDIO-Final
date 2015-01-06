@@ -1,9 +1,9 @@
 package fields;
 
-public class LaborCamp extends Ownable{
+public class OurBrewery extends Ownable{
 	private int baseRent = 100;
 	
-	public LaborCamp(int price, String name, int id, int fieldPossition){
+	public OurBrewery(int price, String name, int id, int fieldPossition){
 		super.setPrice(price);
 		super.setName(name);
 		super.setFieldId(id);

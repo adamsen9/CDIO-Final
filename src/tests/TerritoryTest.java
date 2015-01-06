@@ -10,10 +10,10 @@ import fields.*;
 import controllers.*;
 public class TerritoryTest {
 	Die die;
-	Territory territory;
-	TerritoryController territoryController;
+	OurStreet territory;
+	OurStreetController territoryController;
 	GUIManager display;
-	Territory territory2; 
+	OurStreet territory2; 
 	
 //Der er lavet test for LandOnField() af Territory. LandOnField tjekker følgende:
 		//Lander man på et felt der ikke ejes får man muligheden for:
@@ -45,8 +45,8 @@ public class TerritoryTest {
 	@Before
 	public void setUp(){
 		die = new Die();
-		territory = new Territory(1000, 2000, "Andeby", 2, 10);
-		territoryController = new TerritoryController();
+		territory = new OurStreet(1000, 2000, "Andeby", 2, 10);
+		territoryController = new OurStreetController();
 		display = new GUIManager("test", "10%", "Køb");
 	}
 	

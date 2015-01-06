@@ -11,9 +11,9 @@ import fields.*;
 
 public class LaborCampTest {
 	Die die;
-	LaborCampController labcController;
-	LaborCamp laborCamp;
-	LaborCamp laborCamp2;
+	OurBreweryController labcController;
+	OurBrewery laborCamp;
+	OurBrewery laborCamp2;
 	Player player1;
 	Player player2;
 	GUIManager display;
@@ -24,8 +24,8 @@ public class LaborCampTest {
 	@Before
 	public void setUp(){
 		die = new Die(6, "test");
-		labcController = new LaborCampController();
-		laborCamp = new LaborCamp(2000, "Andeby", 15, 10);
+		labcController = new OurBreweryController();
+		laborCamp = new OurBrewery(2000, "Andeby", 15, 10);
 		display = new GUIManager("test", "10%", "Køb");
 		
 	}	
@@ -182,7 +182,7 @@ public class LaborCampTest {
 		
 		Player player1 = new Player(1,"Joachim Von And");
 		Player player2 = new Player(2,"Guld-Iver Flintesten");
-		laborCamp2 = new LaborCamp(2000, "Bjørnehulen", 16, 11);
+		laborCamp2 = new OurBrewery(2000, "Bjørnehulen", 16, 11);
 		
 		labcController.landOnField(player1, display, laborCamp2, die);
 		HasLost1 = labcController.landOnField(player1, display, laborCamp, die);
@@ -208,7 +208,7 @@ public class LaborCampTest {
 		
 		Player player1 = new Player(1,"Joachim Von And");
 		Player player2 = new Player(2,"Guld-Iver Flintesten");
-		laborCamp2 = new LaborCamp(2000, "Bjørnehulen", 16, 11);
+		laborCamp2 = new OurBrewery(2000, "Bjørnehulen", 16, 11);
 		player2.getAcc().setBalance(2400);
 		
 		labcController.landOnField(player1, display, laborCamp2, die);
@@ -233,7 +233,7 @@ public class LaborCampTest {
 	public void OwnedOtherTwoPayRentBelow(){
 		Player player1 = new Player(1,"Joachim Von And");
 		Player player2 = new Player(2,"Guld-Iver Flintesten");
-		laborCamp2 = new LaborCamp(2000, "Bjørnehulen", 16, 11);
+		laborCamp2 = new OurBrewery(2000, "Bjørnehulen", 16, 11);
 		player2.getAcc().setBalance(1200);
 		
 		labcController.landOnField(player1, display, laborCamp2, die);

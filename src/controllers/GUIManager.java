@@ -3,12 +3,12 @@ package controllers;
 import java.awt.Color;
 
 import entities.GameBoard;
-import fields.Fleet;
-import fields.LaborCamp;
+import fields.OurShipping;
+import fields.OurBrewery;
 import fields.OurField;
-import fields.OurRefuge;
+import fields.OurParking;
 import fields.OurTax;
-import fields.Territory;
+import fields.OurStreet;
 import boundaryToMatador.*;
 
 public class GUIManager {
@@ -36,7 +36,7 @@ public class GUIManager {
 			String fieldType = field.getType();
 			switch (fieldType){
 			case "Territory":
-				Territory territory = (Territory) field;
+				OurStreet territory = (OurStreet) field;
 				fields[i] = new Street.Builder()
 					.setTitle(territory.getName())
 					.setDescription("Rent: " + territory.getRent())
@@ -44,7 +44,7 @@ public class GUIManager {
 					.build();
 				break;
 			case "Refuge":
-				OurRefuge refuge = (OurRefuge) field;
+				OurParking refuge = (OurParking) field;
 				fields[i] = new Refuge.Builder()
 					.setTitle(refuge.getName())
 					.setDescription("Receive: " + refuge.getBonus())
@@ -52,7 +52,7 @@ public class GUIManager {
 					.build();
 				break;
 			case "LaborCamp":
-				LaborCamp laborCamp = (LaborCamp) field;
+				OurBrewery laborCamp = (OurBrewery) field;
 				fields[i] = new Brewery.Builder()
 					.setTitle(laborCamp.getName())
 					.setDescription("Rent: 100 * rolled value")
@@ -76,7 +76,7 @@ public class GUIManager {
 				}
 				break;		
 			case "Fleet":
-				Fleet fleet = (Fleet) field;
+				OurShipping fleet = (OurShipping) field;
 				fields[i] = new Shipping.Builder()
 					.setTitle(fleet.getName())
 					.setSubText("Price: " + fleet.getPrice())

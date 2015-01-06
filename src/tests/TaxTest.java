@@ -11,7 +11,7 @@ import org.junit.Before;
 public class TaxTest{
 	Die die;
 	OurTax tax;
-	TaxController taxController;
+	OurTaxController taxController;
 	GUIManager display;
 	Player player;
 	
@@ -19,7 +19,7 @@ public class TaxTest{
 	public void setup() {
 		die = new Die();
 		tax = new OurTax(4000, 10, "skat", 1, 1);
-		taxController = new TaxController();
+		taxController = new OurTaxController();
 		display = new GUIManager("test", "10%", "køb");
 		player = new Player(1, "Mathias");
 	}

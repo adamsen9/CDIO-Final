@@ -1,9 +1,9 @@
 package fields;
 
-public class Territory extends Ownable{
+public class OurStreet extends Ownable{
 	private int rent;
 	
-	public Territory(int rent, int price, String name, int id, int fieldPossition){
+	public OurStreet(int rent, int price, String name, int id, int fieldPossition){
 		this.rent = rent;
 		super.setPrice(price);;
 		super.setName(name);

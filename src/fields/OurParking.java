@@ -1,10 +1,10 @@
 package fields;
 
-public class OurRefuge extends OurField{
+public class OurParking extends OurField{
 	private int bonus;
 	private int fieldPossition;
 	
-	public OurRefuge(int bonus, String name, int id, int fieldPossition){
+	public OurParking(int bonus, String name, int id, int fieldPossition){
 		this.bonus = bonus;
 		super.setName(name);
 		super.setFieldId(id);

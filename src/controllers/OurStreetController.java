@@ -2,16 +2,16 @@ package controllers;
 import entities.*;
 import fields.*;
 
-public class TerritoryController extends OwnableController {
-	private Territory territory;
+public class OurStreetController extends OwnableController {
+	private OurStreet territory;
 	
-	public TerritoryController() {
+	public OurStreetController() {
 		
 	}
 
 	@Override
 	public boolean landOnField(Player player, GUIManager display, OurField field, Die die) {
-		territory = (Territory) field;
+		territory = (OurStreet) field;
 		if(territory.isOwned()) {
 			if(isOwner(player, territory)) {
 				display.sendMessage("Du er ejer af denne grund");

@@ -8,11 +8,11 @@ import fields.*;
 
 public class GameController {
 	private OurField currentField;
-	private TerritoryController territoryController = new TerritoryController();
-	private LaborCampController laborCampController = new LaborCampController();
-	private FleetController fleetController = new FleetController();
-	private RefugeController refugeController = new RefugeController();
-	private TaxController taxController = new TaxController();
+	private OurStreetController territoryController = new OurStreetController();
+	private OurBreweryController laborCampController = new OurBreweryController();
+	private OurShippingController fleetController = new OurShippingController();
+	private OurParkingController refugeController = new OurParkingController();
+	private OurTaxController taxController = new OurTaxController();
 	private Player activePlayer;
 	private GameBoard board;
 	private Die dice;

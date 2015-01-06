@@ -5,9 +5,9 @@ import entities.Player;
 import fields.OurField;
 import fields.OurTax;
 
-public class TaxController extends FieldController{
+public class OurTaxController extends FieldController{
 	private OurTax tax;
-	public TaxController(){
+	public OurTaxController(){
 		
 	}
 

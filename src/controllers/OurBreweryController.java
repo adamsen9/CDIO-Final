@@ -2,18 +2,18 @@ package controllers;
 
 import entities.Die;
 import entities.Player;
-import fields.LaborCamp;
+import fields.OurBrewery;
 import fields.OurField;
 
-public class LaborCampController extends OwnableController{
-	private LaborCamp laborCamp;
-	public LaborCampController() {
+public class OurBreweryController extends OwnableController{
+	private OurBrewery laborCamp;
+	public OurBreweryController() {
 		
 	}
 
 	@Override
 	public boolean landOnField(Player player, GUIManager display, OurField field, Die die) {
-		laborCamp = (LaborCamp) field;
+		laborCamp = (OurBrewery) field;
 	    if(laborCamp.isOwned()){
 	    	if(!isOwner(player, laborCamp)){
 	    			//Jeg sender en besked han skal bekræfte for at fortsætte, hvor der står hvilket felt han har landt på og hvad der skal ske
