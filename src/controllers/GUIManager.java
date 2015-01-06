@@ -106,6 +106,7 @@ public class GUIManager {
 	}
 	public void addPlayer(String name, int balance, Color color) {
 		GUI.addPlayer(name, balance, color);
+		GUI.setCar(1, name);
 	}
 
 	public void setDice(int dieOne, int dieTwo) {

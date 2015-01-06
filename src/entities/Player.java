@@ -2,8 +2,8 @@ package entities;
 
 public class Player{
 	private String name;
-	private int previous_field = 0;
-	private int field = 0;
+	private int previous_field = 1;
+	private int field = 1;
 	final private int ID;
 	final private int STARTMONEY = 30000;
 	private String payMethod = "10%"; // Kan være "10%" eller "4000"
