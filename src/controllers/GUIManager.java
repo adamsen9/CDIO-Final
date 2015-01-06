@@ -3,13 +3,9 @@ package controllers;
 import java.awt.Color;
 
 import entities.GameBoard;
-import fields.OurShipping;
-import fields.OurBrewery;
-import fields.OurField;
-import fields.OurParking;
-import fields.OurTax;
-import fields.OurStreet;
+import fields.*;
 import boundaryToMatador.*;
+import boundaryToMatador.Chance.Builder;
 
 public class GUIManager {
 	String state;
@@ -35,7 +31,7 @@ public class GUIManager {
 			OurField field = board.getField(i);
 			String fieldType = field.getType();
 			switch (fieldType){
-			case "Territory":
+			case "Street":
 				OurStreet territory = (OurStreet) field;
 				fields[i] = new Street.Builder()
 					.setTitle(territory.getName())
@@ -43,7 +39,7 @@ public class GUIManager {
 					.setSubText("Price: " + territory.getPrice())
 					.build();
 				break;
-			case "Refuge":
+			case "Parking":
 				OurParking refuge = (OurParking) field;
 				fields[i] = new Refuge.Builder()
 					.setTitle(refuge.getName())
@@ -51,12 +47,12 @@ public class GUIManager {
 					.setSubText("Recieve: " + refuge.getBonus())
 					.build();
 				break;
-			case "LaborCamp":
-				OurBrewery laborCamp = (OurBrewery) field;
+			case "Brewery":
+				OurBrewery brewery = (OurBrewery) field;
 				fields[i] = new Brewery.Builder()
-					.setTitle(laborCamp.getName())
+					.setTitle(brewery.getName())
 					.setDescription("Rent: 100 * rolled value")
-					.setSubText("Price: " + laborCamp.getPrice())
+					.setSubText("Price: " + brewery.getPrice())
 					.build();
 				break;
 			case "Tax":
@@ -75,14 +71,25 @@ public class GUIManager {
 					.build();
 				}
 				break;		
-			case "Fleet":
-				OurShipping fleet = (OurShipping) field;
+			case "Shipping":
+				OurShipping shipping = (OurShipping) field;
 				fields[i] = new Shipping.Builder()
-					.setTitle(fleet.getName())
-					.setSubText("Price: " + fleet.getPrice())
+					.setTitle(shipping.getName())
+					.setSubText("Price: " + shipping.getPrice())
 					.setDescription("Rent 1: 500 | Rent 2: 1000 | Rent 3: 2000 | Rent 4: 4000")
 					.build();
 				break;
+			case "Jail":
+				OurJail jail = (OurJail) field;
+				fields[i] = new Jail.Builder()
+					.setTitle(jail.getName())
+					.build();
+				break;
+			case "Start":
+				fields[i] = new Start.Builder().build();
+				break;
+			case "Chance":
+				fields[i] = new Builder().build();
 			}
 		}
 		
