@@ -4,11 +4,17 @@ import entities.*;
 import fields.*;
 
 public abstract class OwnableController extends FieldController {
-	
+	private OurStreet street;
 	public boolean buyField(Player player, GUIManager display, Ownable field){
+		
 		if(player.getBalance() >= field.getPrice()){
 			player.withdraw(field.getPrice());
-			player.addToInventory(field.getFieldPossition(), field.getPrice());
+			if(field.getType() == "street"){
+				setStreet((OurStreet) field);
+				player.addToInventory(field.getFieldPossition(), field.getPrice(), street.getCategory());
+			} else{
+				player.addToInventory(field.getFieldPossition(), field.getPrice());
+			}
     		field.setOwner(player);
     		display.setOwner(player.getField(), player.getName());
     		return true;
@@ -33,5 +39,13 @@ public abstract class OwnableController extends FieldController {
 	
 	public boolean payRent(Player player, OurBrewery laborCamp, int sum){
 		return player.transfer(laborCamp.getOwner(), laborCamp.getBaseRent()*laborCamp.getOwner().getNumberOfLaborCampsOwned()*sum);
+	}
+
+	public OurStreet getStreet() {
+		return street;
+	}
+
+	public void setStreet(OurStreet street) {
+		this.street = street;
 	}
 }

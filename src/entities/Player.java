@@ -12,6 +12,7 @@ public class Player{
 	private int numberOfLaborCampsOwned = 0;
 	private boolean hasLost = false;
 	private int[] inventory = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+	private int[] OwnedInCategory = {0,0,0,0,0,0,0,0};
 	private int numberOfFieldsOwned = 0;
 	private int wealthOfFieldsOwned = 0;
 	
@@ -127,12 +128,18 @@ public class Player{
 		this.inventory = inventory;
 	}
 	
+	public void addToInventory(int fieldNumber, int fieldPrice, int category){
+		this.inventory[this.numberOfFieldsOwned] = fieldNumber;
+		this.numberOfFieldsOwned++;
+		this.wealthOfFieldsOwned += fieldPrice;
+		this.OwnedInCategory[category-1]++;
+	}
+	
 	public void addToInventory(int fieldNumber, int fieldPrice){
 		this.inventory[this.numberOfFieldsOwned] = fieldNumber;
 		this.numberOfFieldsOwned++;
 		this.wealthOfFieldsOwned += fieldPrice;
 	}
-	
 	public int getTotalAssets() {
 		int totalAssets = acc.getBalance() + wealthOfFieldsOwned;
 		return totalAssets;

@@ -7,16 +7,19 @@ public class OurStreet extends Ownable{
 	private int housePrice;
 	private Color color;
 	private int numberOfHouses;
+	private int category;
 	
-	public OurStreet(int[] rent, int price, int housePrice, String name, int id, int fieldPossition, Color color){
+	public OurStreet(int[] rent, int price, int housePrice, String name, int id, int fieldPossition, Color color, int category){
 		this.rent = rent;
 		this.color = color;
 		this.setHousePrice(housePrice);
+		this.setCategory(category);
 		super.setPrice(price);
 		super.setName(name);
 		super.setFieldId(id);
 		super.setType("Street");
 		super.setFieldPossition(fieldPossition);
+		
 	}
 	
 	public void setRent(int rent, int index){
@@ -53,5 +56,13 @@ public class OurStreet extends Ownable{
 
 	public void setColor(Color color) {
 		this.color = color;
+	}
+
+	public int getCategory() {
+		return category;
+	}
+
+	public void setCategory(int category) {
+		this.category = category;
 	}
 }

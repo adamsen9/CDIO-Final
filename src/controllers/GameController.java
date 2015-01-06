@@ -22,6 +22,7 @@ public class GameController {
 	private Color colors[];
 	private GUIManager display;
 	private String name;
+	private boolean hej;
 	
 	public GameController(){
 		
@@ -71,11 +72,23 @@ public class GameController {
 				display.winning(winningPlayer.getName());
 				break;
 			}
-			display.roll(activePlayer.getName());
+			while (hej){
+				String result = display.roll(activePlayer.getName());
+				if(result == "Køb hus/hotel"){
+					int[] foo = activePlayer.getInventory();
+					for(int i = 0; i < foo.length; i++){
+						
+					}
+				} else{
+					hej = false;
+				}
+			}
+			hej = true;
 			dieOne = dice.roll();
 			dieTwo = dice.roll();
 			display.setDice(dieOne, dieTwo);
 			activePlayer.move(dieOne+dieTwo);
+			display.updateBalance(activePlayer.getName(), activePlayer.getBalance());
 			
 			//Spiller bevæger sig
 			display.movePlayer(activePlayer.getPrevField(), activePlayer.getField(), activePlayer.getName());

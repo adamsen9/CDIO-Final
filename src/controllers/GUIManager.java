@@ -120,11 +120,11 @@ public class GUIManager {
 		return numberOfPlayers;
 	}
 	
-	public void roll(String name){
+	public String roll(String name){
 		if(state == "test"){
-			return;
+			return "";
 		}
-		GUI.getUserButtonPressed("Det er " + name + "'s tur. Tryk på knappen for at kaste terningerne.", "Kast");
+		return GUI.getUserButtonPressed("Det er " + name + "'s tur. Tryk på knappen for at kaste terningerne.", "Kast", "Køb hus/hotel");
 	}
 	
 	public int movePlayer(int prevField, int field, String name){
