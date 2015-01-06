@@ -200,6 +200,14 @@ public class GUIManager {
 		String name = GUI.getUserString("Indtast venligst navnet for spiller "+playerNumber+":");
 		return name;
 	}
+	
+	public String rollOrPay() {
+		return GUI.getUserButtonPressed("Vil du betale 1000 dkk eller rulle en gang med terningerne", "Betal","Rul");
+	}
+	
+	
+	
+	
 }
 
 

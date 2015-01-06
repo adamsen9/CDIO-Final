@@ -15,6 +15,8 @@ public class Player{
 	private int[] OwnedInCategory = {0,0,0,0,0,0,0,0};
 	private int numberOfFieldsOwned = 0;
 	private int wealthOfFieldsOwned = 0;
+	private int timeInJail = 0;
+	private boolean imPrisoned;
 	
 	public Player() {
 		this.name = "DefaultPlayer";
@@ -169,4 +171,21 @@ public class Player{
 	public void deposit(int amount){
 		acc.deposit(amount);
 	}
+
+	public int getTimeInJail() {
+		return timeInJail;
+	}
+
+	public void setTimeInJail(int timeInJail) {
+		this.timeInJail = timeInJail;
+	}
+
+	public boolean isImPrisoned() {
+		return imPrisoned;
+	}
+
+	public void setImPrisoned(boolean imPrisoned) {
+		this.imPrisoned = imPrisoned;
+	}
+
 }
