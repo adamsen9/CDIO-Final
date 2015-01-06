@@ -67,11 +67,32 @@ public class GameController {
 					countOfNotNull++;
 					winningPlayer = players[count];
 				}
+				
+			}
+			
+			//Jail logik
+			if (activePlayer.isImPrisoned()){
+				if(display.rollOrPay().equals("Betal")){
+					activePlayer.setImPrisoned(false);
+					if(!activePlayer.withdraw(1000)){
+						bankruptcy(turn);
+						
+					}
+				}	
+				else {
+					dieOne = dice.roll();
+					dieTwo = dice.roll();
+					if(dieOne==dieTwo){
+						activePlayer.move(dieOne+dieTwo);
+						activePlayer.setImPrisoned(false);
+					} 
+			}
 			}
 			if (countOfNotNull == 1){
 				display.winning(winningPlayer.getName());
 				break;
 			}
+			if(!activePlayer.isImPrisoned()) {
 			display.roll(activePlayer.getName());
 			dieOne = dice.roll();
 			dieTwo = dice.roll();
@@ -84,6 +105,21 @@ public class GameController {
 			//Logik til at kontrollere hvilket felt der er landet på.
 			
 			currentField = board.getField(activePlayer.getField() - 1);
+			
+			}
+			else{
+				dieOne = dice.roll();
+				dieTwo = dice.roll();
+				activePlayer.setTimeInJail(activePlayer.getTimeInJail()+1);
+				if(activePlayer.getTimeInJail()==4){
+					activePlayer.move(dieOne+dieTwo);
+					activePlayer.setImPrisoned(false);
+					if(!activePlayer.withdraw(1000)){
+						bankruptcy(turn);
+				}
+			}
+		}
+				
 			switch(currentField.getType()) {
 			case("Street"):
 				if(!streetController.landOnField(activePlayer, display, currentField, dice)){
