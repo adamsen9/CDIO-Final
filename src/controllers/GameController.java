@@ -45,13 +45,19 @@ public class GameController {
 		display.create(board);
 		
 		//Vælg antal spillere
-		numberOfPlayers = display.getNumberOfPlayers();
+		//numberOfPlayers = display.getNumberOfPlayers();
+//		for(int i = 0; i < numberOfPlayers; i++){
+//			name = display.getPlayerName(i+1);
+//			players[i] = new Player(i, name);
+//			display.addPlayer(players[i].getName(), players[i].getBalance(), colors[i]);
+//		}
 		
-		for(int i = 0; i < numberOfPlayers; i++){
-			name = display.getPlayerName(i+1);
-			players[i] = new Player(i, name);
-			display.addPlayer(players[i].getName(), players[i].getBalance(), colors[i]);
-		}
+		numberOfPlayers = 2;
+		players[0] = new Player(0, "Jens");
+		display.addPlayer("Jens", 30000, colors[0]);
+		
+		players[1] = new Player(1, "Mogens");
+		display.addPlayer("Mogens", 30000, colors[1]);
 		
 		//loop er får vores spil til at køre.
 		while(true){
