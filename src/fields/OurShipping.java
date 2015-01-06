@@ -8,7 +8,7 @@ public class OurShipping extends Ownable{
 		super.setPrice(price);
 		super.setName(name);
 		super.setFieldId(id);
-		super.setType("Fleet");
+		super.setType("Shipping");
 		super.setFieldPossition(possition);
 		
 	}

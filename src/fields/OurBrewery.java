@@ -7,7 +7,7 @@ public class OurBrewery extends Ownable{
 		super.setPrice(price);
 		super.setName(name);
 		super.setFieldId(id);
-		super.setType("LaborCamp");
+		super.setType("Brewery");
 		super.setFieldPossition(fieldPossition);
 	}
 	

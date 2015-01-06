@@ -8,7 +8,7 @@ public class OurParking extends OurField{
 		this.bonus = bonus;
 		super.setName(name);
 		super.setFieldId(id);
-		super.setType("Refuge");
+		super.setType("Parking");
 		this.setFieldPossition(fieldPossition);
 	}
 	
