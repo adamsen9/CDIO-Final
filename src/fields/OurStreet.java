@@ -1,19 +1,25 @@
 package fields;
 
 public class OurStreet extends Ownable{
-	private int rent;
+	private int[] rent = new int[6];
 	
-	public OurStreet(int rent, int price, String name, int id, int fieldPossition){
+	public OurStreet(int[] rent, int price, String name, int id, int fieldPossition){
 		this.rent = rent;
 		super.setPrice(price);;
 		super.setName(name);
 		super.setFieldId(id);
-		super.setType("Territory");
+		super.setType("Street");
 		super.setFieldPossition(fieldPossition);
 	}
 	
-	public void setRent(int rent){
-		this.rent = rent;
+	public void setRent(int rent, int index){
+		if (index <= 5) {
+			this.rent[index] = rent;
+		} else {
+			System.out.println("forkert index.");
+			return;
+		}
+		
 	}
 	
 	@Override
