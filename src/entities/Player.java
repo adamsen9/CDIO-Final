@@ -61,8 +61,8 @@ public class Player{
 
 	public void move(int roll) {
 		previous_field = field;
-		if (field+roll == 21) field=21;
-		else field = (field+roll)%21;
+		if (field+roll == 40) field=40;
+		else field = (field+roll)%40;
 	}
 	
 	public void setPayMethod(String method) {
