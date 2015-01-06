@@ -84,13 +84,17 @@ public class GUIManager {
 				OurJail jail = (OurJail) field;
 				fields[i] = new Jail.Builder()
 					.setTitle(jail.getName())
+					.setSubText(jail.getName())
 					.build();
 				break;
 			case "Start":
 				fields[i] = new Start.Builder().build();
 				break;
 			case "Chance":
-				fields[i] = new Chance.Builder().build();
+				fields[i] = new Chance.Builder()
+				.setFgColor(Color.WHITE)
+				.setBgColor(Color.BLACK)
+				.build();
 				break;
 			}
 		}
