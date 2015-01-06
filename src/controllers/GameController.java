@@ -43,7 +43,6 @@ public class GameController {
 		display = new GUIManager();
 		display.create(board);
 		
-		
 		//Vælg antal spillere
 		numberOfPlayers = display.getNumberOfPlayers();
 		
