@@ -37,6 +37,7 @@ public class GUIManager {
 					.setTitle(territory.getName())
 					.setDescription("Rent: " + territory.getRent())
 					.setSubText("Price: " + territory.getPrice())
+					.setBgColor(territory.getColor())
 					.build();
 				break;
 			case "Parking":
@@ -83,13 +84,18 @@ public class GUIManager {
 				OurJail jail = (OurJail) field;
 				fields[i] = new Jail.Builder()
 					.setTitle(jail.getName())
+					.setSubText(jail.getName())
 					.build();
 				break;
 			case "Start":
 				fields[i] = new Start.Builder().build();
 				break;
 			case "Chance":
-				fields[i] = new Builder().build();
+				fields[i] = new Chance.Builder()
+				.setFgColor(Color.WHITE)
+				.setBgColor(Color.BLACK)
+				.build();
+				break;
 			}
 		}
 		

@@ -8,8 +8,9 @@ public class OurStreet extends Ownable{
 	private Color color;
 	private int numberOfHouses;
 	
-	public OurStreet(int[] rent, int price, int housePrice, String name, int id, int fieldPossition){
+	public OurStreet(int[] rent, int price, int housePrice, String name, int id, int fieldPossition, Color color){
 		this.rent = rent;
+		this.color = color;
 		this.setHousePrice(housePrice);
 		super.setPrice(price);
 		super.setName(name);
