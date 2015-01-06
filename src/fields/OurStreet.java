@@ -1,11 +1,16 @@
 package fields;
 
+import java.awt.Color;
+
 public class OurStreet extends Ownable{
 	private int[] rent = new int[6];
+	private int housePrice;
+	private Color color;
 	
-	public OurStreet(int[] rent, int price, String name, int id, int fieldPossition){
+	public OurStreet(int[] rent, int price, int housePrice, String name, int id, int fieldPossition){
 		this.rent = rent;
-		super.setPrice(price);;
+		this.housePrice = housePrice;
+		super.setPrice(price);
 		super.setName(name);
 		super.setFieldId(id);
 		super.setType("Street");
