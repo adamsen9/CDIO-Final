@@ -206,7 +206,7 @@ public class GUIManager {
 		return GUI.getUserButtonPressed("Vil du betale 1000 dkk eller rulle en gang med terningerne", "Betal","Rul");
 	}
 	public String chooseToBid(String name, int bid) {
-		return GUI.getUserButtonPressed("Det er " + name + "'s tur. Vil du byde på grunden? Buddet er på " + bid + " kroner.","Ja","Nej");
+		return GUI.getUserButtonPressed("Det er " + name + "'s tur til at byde. Vil du byde på grunden? Buddet er på " + bid + " kroner.","Ja","Nej");
 	}
 	
 	public int enterBid(int bid) {

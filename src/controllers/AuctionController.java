@@ -15,9 +15,12 @@ public class AuctionController {
 		int bidders = auctioneers.length;
 		
 		for(int i = 0; i < auctioneers.length; i++) {
-			if(auctioneers[i] == null)
+			if(auctioneers[i] == null)  {
 				bidders--;
+			}
 		}
+		
+		System.out.println(bidders + " bidders");
 		
 		if(bankruptcy == true) {
 			GUI.sendMessage("Der bliver afholdt tvangsauktion af feltet" + field.getName() + ".");
@@ -58,7 +61,7 @@ public class AuctionController {
 			for(int i = 0; i < auctioneers.length; i++) {
 
 				
-				if((auctioneers != null)) {
+				if((auctioneers[i] != null)) {
 					choice = GUI.chooseToBid(auctioneers[i].getName(), bid);
 					
 					if(choice.equals("Ja") && auctioneers[i].getBalance() >= bid) {
@@ -74,6 +77,7 @@ public class AuctionController {
 						
 					}
 				}
+			}
 		}
 		
 		
