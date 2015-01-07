@@ -209,19 +209,32 @@ public class GUIManager {
 		return GUI.getUserButtonPressed("Det er " + name + "'s tur til at byde. Vil du byde på grunden? Buddet er på " + bid + " kroner.","Ja","Nej");
 	}
 	
-	public int enterBid(int bid) {
-		
-		
-		String input = GUI.getUserString("Indtast venligst et bud");
+	public int enterBid(int bid, int auctioneerBalance) {
+		String input = "";
+		Boolean cinput = true;
+		//ExceptionHandling
+
 		int newBid = 0;
-		
-		try {
-		      newBid = Integer.parseInt(input);
-		} catch (NumberFormatException e) {
-			System.out.println("Catchede exception");
-		      //Will Throw exception!
-		      //do something! anything to handle the exception.
+		while(true) {
+			do {
+				input = GUI.getUserString("Indtast venligst et bud højere end " + bid);
+				try {
+					newBid = Integer.parseInt(input);
+					cinput = false;
+				} catch (NumberFormatException e) {
+					System.out.println("Catchede exception");
+				}
+				
+			} while (cinput);
+			if(newBid < bid) {
+				GUI.getUserButtonPressed("Du skal som minimum give et højere bud end det tidligere bud, der er på " + bid, "Prøv igen");
+			} else if(auctioneerBalance < bid) {
+				GUI.getUserButtonPressed("Du kan ikke byde mere end du har. Du har " + auctioneerBalance, "Prøv igen");
+			} else {
+				break;
+			}
 		}
+		
 		
 		return newBid;
 	}

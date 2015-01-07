@@ -20,8 +20,6 @@ public class AuctionController {
 			}
 		}
 		
-		System.out.println(bidders + " bidders");
-		
 		if(bankruptcy == true) {
 			GUI.sendMessage("Der bliver afholdt tvangsauktion af feltet" + field.getName() + ".");
 		} else {
@@ -46,37 +44,32 @@ public class AuctionController {
 		Player highestBidder = null;
 		String choice = "";
 		
-		for(int i = 0; i < auctioneers.length; i++) {
-			if(auctioneers[i] == null) {
-				System.out.println(i + " = null");
-			} else {
-				System.out.println(i + " != null");
-			}
-		}
-		
-		System.out.println(auctioneers[1].getName());
-		System.out.println(auctioneers[2].getName());
-		
-		while(bidders != 1) {
+		while(true) {
 			for(int i = 0; i < auctioneers.length; i++) {
-
 				
 				if((auctioneers[i] != null)) {
-					choice = GUI.chooseToBid(auctioneers[i].getName(), bid);
-					
-					if(choice.equals("Ja") && auctioneers[i].getBalance() >= bid) {
-						//Spørg om hvor meget
-						GUI.enterBid(bid);
-						
-						
-					} else if(choice.equals("Nej")) {
+					if(auctioneers[i].getBalance() < bid) {
+						GUI.sendMessage(auctioneers[i].getName() + " har ikke længere råd til at byde på auktionen og er automatisk ude");
 						auctioneers[i] = null;
-						bidders--;
-						System.out.println(bidders);
-					} else if(choice.equals("Ja") && auctioneers[i].getBalance() < bid ) {
+					} else {
+						choice = GUI.chooseToBid(auctioneers[i].getName(), bid);
 						
+						if(choice.equals("Ja") && auctioneers[i].getBalance() >= bid) {
+							//Spørg om hvor meget
+							bid = GUI.enterBid(bid, auctioneers[i].getBalance());
+							
+							highestBidder = auctioneers[i];
+							
+						} else if(choice.equals("Nej")) {
+							auctioneers[i] = null;
+							bidders--;
+						}
 					}
 				}
+			}
+			
+			if(bidders == 1) {
+				break;
 			}
 		}
 		
