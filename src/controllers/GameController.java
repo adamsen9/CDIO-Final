@@ -22,7 +22,6 @@ public class GameController {
 	private Color colors[];
 	private GUIManager display;
 	private String name;
-	private boolean hej;
 	
 	public GameController(){
 		
@@ -78,7 +77,7 @@ public class GameController {
 				display.winning(winningPlayer.getName());
 				break;
 			}
-			while (hej){
+			while (true){
 				String result = display.roll(activePlayer.getName());
 				if(result == "Køb hus/hotel"){
 					int[] ownedInCategory = activePlayer.getOwnedInCategory();
@@ -87,10 +86,9 @@ public class GameController {
 							
 					}
 				} else{
-					hej = false;
+					break;
 				}
 			}
-			hej = true;
 			dieOne = dice.roll();
 			dieTwo = dice.roll();
 			display.setDice(dieOne, dieTwo);
