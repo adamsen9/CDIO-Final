@@ -1,5 +1,6 @@
 package controllers;
 import java.awt.Color;
+import java.util.ArrayList;
 
 import entities.Die;
 import entities.GameBoard;
@@ -15,6 +16,7 @@ public class GameController {
 	private OurTaxController taxController = new OurTaxController();
 	private OurJailController jailController = new OurJailController();
 	private OurChanceController chanceController = new OurChanceController();
+	private AuctionController auctionController = new AuctionController();
 	private Player activePlayer;
 	private GameBoard board;
 	private Die dice;
@@ -89,6 +91,19 @@ public class GameController {
 					hej = false;
 				}
 			}
+			
+			Player[] auctioneers = new Player[players.length];
+			
+			
+			//Players who can participiate in the auction is added to the crowd
+			for(int i = 0; i < players.length; i++) {
+				if(players[i].getId() != activePlayer.getId() && !(players[i].isHasLost())) {
+					System.out.print("Spiller" + players[i].getId() + "er en auktionsgænger");
+				}
+			}
+			
+			auctionController.Auction(display, auctioneers, (Ownable) board.getField(40), false);
+			
 			hej = true;
 			dieOne = dice.roll();
 			dieTwo = dice.roll();

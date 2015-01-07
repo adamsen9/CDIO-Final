@@ -1,4 +1,6 @@
 package controllers;
+import java.util.ArrayList;
+
 import entities.*;
 import fields.*;
 
@@ -9,18 +11,15 @@ public class AuctionController {
 		
 	}
 	
-	
-	public boolean bankruptcyAuction(){
+	public boolean Auction(GUIManager GUI, Player[] auctioneers, Ownable field, boolean bankruptcy){
+		if(bankruptcy == true) {
+			
+		} else {
+			
+		}
 		
-		
-		return true;
-	}
-	
-	public boolean Auction(GUIManager GUI, Player players[], Ownable field){
 		Player winner = new Player();
 		int bid = 0;
-
-		
 		
 		//GUI.removeOwner(playerInventory[i]);
 		
