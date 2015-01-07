@@ -1,5 +1,6 @@
 package controllers;
 import java.awt.Color;
+import java.util.ArrayList;
 
 import entities.Die;
 import entities.GameBoard;
@@ -81,9 +82,14 @@ public class GameController {
 				String result = display.roll(activePlayer.getName());
 				if(result == "Køb hus/hotel"){
 					int[] ownedInCategory = activePlayer.getOwnedInCategory();
-					String[] owned;
+					ArrayList<String> owned = new ArrayList<String>();
 					for(int i = 0; i < ownedInCategory.length; i++){
-						
+						if((ownedInCategory[i] == 2 && (i == 0 || i == 7)) || ownedInCategory[i] == 3){
+							ArrayList<OurField> foo = board.getAllInCategory(i);
+							for(int j = 0; j < foo.size(); j++){
+								owned.add(foo.get(j).getName());
+							}
+						}
 					}
 				} else{
 					break;
