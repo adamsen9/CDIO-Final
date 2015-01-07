@@ -211,25 +211,17 @@ public class GUIManager {
 	
 	public int enterBid(int bid) {
 		
+		
+		String input = GUI.getUserString("Indtast venligst et bud");
 		int newBid = 0;
-		String StringThatCouldBeANumberOrNot = "26263Hello"; //will throw exception
-		String StringThatCouldBeANumberOrNot2 = "26263"; //will not throw exception
+		
 		try {
-		      newBid = Integer.parseInt(StringThatCouldBeANumberOrNot);
+		      newBid = Integer.parseInt(input);
 		} catch (NumberFormatException e) {
+			System.out.println("Catchede exception");
 		      //Will Throw exception!
 		      //do something! anything to handle the exception.
 		}
-
-		try {
-		      newBid = Integer.parseInt(StringThatCouldBeANumberOrNot2);
-		} catch (NumberFormatException e) {
-		      //No problem this time but still it is good practice to care about exceptions.
-		      //Never trust user input :)
-		      //do something! anything to handle the exception.
-		}
-		
-		
 		
 		return newBid;
 	}

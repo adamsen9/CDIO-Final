@@ -43,25 +43,40 @@ public class AuctionController {
 		Player highestBidder = null;
 		String choice = "";
 		
+		for(int i = 0; i < auctioneers.length; i++) {
+			if(auctioneers[i] == null) {
+				System.out.println(i + " = null");
+			} else {
+				System.out.println(i + " != null");
+			}
+		}
+		
+		System.out.println(auctioneers[1].getName());
+		System.out.println(auctioneers[2].getName());
+		
 		while(bidders != 1) {
 			for(int i = 0; i < auctioneers.length; i++) {
+
+				
 				if((auctioneers != null)) {
 					choice = GUI.chooseToBid(auctioneers[i].getName(), bid);
-				}
-				if(choice.equals("Ja") && auctioneers[i].getBalance() >= bid) {
-					//Spørg om hvor meget
-					GUI.enterBid(bid);
 					
-					
-				} else {
-					auctioneers[i] = null;
-					bidders--;
-					System.out.println(bidders);
+					if(choice.equals("Ja") && auctioneers[i].getBalance() >= bid) {
+						//Spørg om hvor meget
+						GUI.enterBid(bid);
+						
+						
+					} else if(choice.equals("Nej")) {
+						auctioneers[i] = null;
+						bidders--;
+						System.out.println(bidders);
+					} else if(choice.equals("Ja") && auctioneers[i].getBalance() < bid ) {
+						
+					}
 				}
-			}
-			
-
 		}
+		
+		
 		
 		if(highestBidder == null) {
 			return false;
