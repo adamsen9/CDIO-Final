@@ -83,7 +83,7 @@ public class GameController {
 					int[] ownedInCategory = activePlayer.getOwnedInCategory();
 					String[] owned;
 					for(int i = 0; i < ownedInCategory.length; i++){
-							
+						
 					}
 				} else{
 					break;

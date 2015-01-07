@@ -1,6 +1,7 @@
 package entities;
 
 import java.awt.Color;
+import java.util.ArrayList;
 
 import fields.*;
 
@@ -72,10 +73,11 @@ public class GameBoard {
 		return s;
 	}
 	
-	public OurField[] getAllInCategory(int category){
-		OurField[] categoryFields;
+	@SuppressWarnings("null")
+	public ArrayList<OurField> getAllInCategory(int category){
+		ArrayList<OurField> categoryFields = new ArrayList<OurField>();
 		for(int i = 0; i < fields.length; i++){
-			categoryFields.append()
+			categoryFields.add(fields[i]);
 		}
 		return categoryFields;
 	}
