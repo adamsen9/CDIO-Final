@@ -134,7 +134,7 @@ public class Player{
 		this.inventory[this.numberOfFieldsOwned] = fieldNumber;
 		this.numberOfFieldsOwned++;
 		this.wealthOfFieldsOwned += fieldPrice;
-		this.OwnedInCategory[category-1]++;
+		this.ownedInCategory[category-1]++;
 	}
 	
 	public void addToInventory(int fieldNumber, int fieldPrice){

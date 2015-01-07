@@ -72,4 +72,11 @@ public class GameBoard {
 		return s;
 	}
 	
+	public OurField[] getAllInCategory(int category){
+		OurField[] categoryFields;
+		for(int i = 0; i < fields.length; i++){
+			categoryFields.append()
+		}
+		return categoryFields;
+	}
 }

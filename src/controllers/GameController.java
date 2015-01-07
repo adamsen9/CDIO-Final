@@ -81,9 +81,10 @@ public class GameController {
 			while (hej){
 				String result = display.roll(activePlayer.getName());
 				if(result == "Køb hus/hotel"){
-					int[] foo = activePlayer.getInventory();
-					for(int i = 0; i < foo.length; i++){
-						
+					int[] ownedInCategory = activePlayer.getOwnedInCategory();
+					String[] owned;
+					for(int i = 0; i < ownedInCategory.length; i++){
+							
 					}
 				} else{
 					hej = false;
