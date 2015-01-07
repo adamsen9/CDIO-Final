@@ -17,10 +17,20 @@ public class AuctionController {
 		} else {
 			GUI.sendMessage("Der bliver afholdt auktion af feltet " + field.getName() + ".");	
 		}
+		GUI.sendMessage("Der bliver afholdt auktion af feltet " + field.getName() + ".");	
+		
+		int bid = field.getPrice();
+		
+		if(field.getPawnedStatus()) {
+			bid = (int) (field.getPrice()/2);
+		} else {
+			GUI.sendMessage(field.getName() + " er ikke pantsat. Startbuddet ligger på " + bid);
+		}
+		
+		
 		
 		Player winner = new Player();
-		
-		int bid = 0;
+
 		
 		//GUI.removeOwner(playerInventory[i]);
 		

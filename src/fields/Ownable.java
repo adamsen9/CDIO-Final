@@ -7,6 +7,7 @@ abstract public class Ownable extends OurField{
 	private Player owner;
 	private int fieldPossition;
 	abstract public int getRent();
+	private boolean pawned = false;
 	
 	public int getPrice() {
 		return price;
@@ -45,5 +46,15 @@ abstract public class Ownable extends OurField{
 
 	public void setFieldPossition(int fieldPossition) {
 		this.fieldPossition = fieldPossition;
+	}
+	
+	public void setPawned(){
+		pawned = true;
+	}
+	public void setNotPawned(){
+		pawned = false;
+	}
+	public boolean getPawnedStatus(){
+		return pawned;
 	}
 }
