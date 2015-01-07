@@ -90,10 +90,9 @@ public class GameController {
 				if(!(players[i] == null)) {
 					if(players[i].getId() != activePlayer.getId()){
 						System.out.println("Spiller " + players[i].getId() + " er en auktionsgænger");
-					
+						auctioneers[i] = players[i];
 					}
 				}
-
 			}
 			
 			auctionController.Auction(display, auctioneers, (Ownable) board.getField(39), false);

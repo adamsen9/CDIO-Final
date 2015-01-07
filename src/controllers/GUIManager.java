@@ -205,7 +205,34 @@ public class GUIManager {
 	public String rollOrPay() {
 		return GUI.getUserButtonPressed("Vil du betale 1000 dkk eller rulle en gang med terningerne", "Betal","Rul");
 	}
+	public String chooseToBid(String name, int bid) {
+		return GUI.getUserButtonPressed("Det er " + name + "'s tur. Vil du byde på grunden? Buddet er på " + bid + " kroner.","Ja","Nej");
+	}
 	
+	public int enterBid(int bid) {
+		
+		int newBid = 0;
+		String StringThatCouldBeANumberOrNot = "26263Hello"; //will throw exception
+		String StringThatCouldBeANumberOrNot2 = "26263"; //will not throw exception
+		try {
+		      newBid = Integer.parseInt(StringThatCouldBeANumberOrNot);
+		} catch (NumberFormatException e) {
+		      //Will Throw exception!
+		      //do something! anything to handle the exception.
+		}
+
+		try {
+		      newBid = Integer.parseInt(StringThatCouldBeANumberOrNot2);
+		} catch (NumberFormatException e) {
+		      //No problem this time but still it is good practice to care about exceptions.
+		      //Never trust user input :)
+		      //do something! anything to handle the exception.
+		}
+		
+		
+		
+		return newBid;
+	}
 	
 	
 	
