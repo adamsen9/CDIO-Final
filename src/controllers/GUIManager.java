@@ -132,6 +132,10 @@ public class GUIManager {
 		GUI.getUserButtonPressed("Slå to ens for at blive løsladt", "Kast");
 	}
 	
+	public void rollPayJail(){
+		GUI.getUserButtonPressed("Du er blevet løsladt ved at betale 1000. Kast for at rykke", "Kast");
+	}
+	
 	public int movePlayer(int prevField, int field, String name){
 		if (prevField!=0) GUI.removeCar(prevField, name);
 		GUI.setCar(field, name);

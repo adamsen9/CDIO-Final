@@ -22,6 +22,7 @@ public class GameController {
 	private Color colors[];
 	private GUIManager display;
 	private String name;
+	private boolean DTurn = false;
 	
 	public GameController(){
 		
@@ -95,25 +96,32 @@ public class GameController {
 			
 			if(activePlayer.isImPrisoned()){
 				if(display.rollOrPay().equals("Betal")){
+					display.rollPayJail();
 					activePlayer.withdraw(1000);
 					activePlayer.setImPrisoned(false);
 					activePlayer.setTimeInJail(0);
+					
 				}
 				else{
 					display.rollJail();
 					display.setDice(dieOne, dieTwo);
 					if(dieOne==dieTwo){
+						display.sendMessage("Du slog 2 ens og er blevet løsladt. Du får en ekstra tur.");
 						activePlayer.setImPrisoned(false);
 						activePlayer.setTimeInJail(0);
+						DTurn = true;
 					}
 					else{
 						activePlayer.setTimeInJail(activePlayer.getTimeInJail()+1);
 						if(activePlayer.getTimeInJail()>3){
+							display.sendMessage("Du siddet din tid og er nu blevet løsladt. Dette koster 1000");
 							activePlayer.withdraw(1000);
 							activePlayer.setImPrisoned(false);
 							activePlayer.setTimeInJail(0);
 						}
 						else{
+							display.sendMessage("Du har ikke slået to ens og forbliver i fængslet");
+							turn++;
 							continue;
 						}
 					}
@@ -167,8 +175,11 @@ public class GameController {
 				break;
 			}
 			//Opdatering af gameboard
-			
-			turn = ++turn % numberOfPlayers;
+			if (DTurn == true){
+				DTurn = false;
+				turn--;
+			}
+				turn = ++turn % numberOfPlayers;
 			for(int i = 0; i < numberOfPlayers; i++) {
 				if (players[i] == null) continue;
 				display.updateBalance(players[i].getName(), players[i].getBalance());
