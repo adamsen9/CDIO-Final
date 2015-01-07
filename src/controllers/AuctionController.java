@@ -17,11 +17,21 @@ public class AuctionController {
 	}
 	
 	public boolean Auction(GUIManager GUI, Player players[], Ownable field){
+		Player winner = new Player();
+		int bid = 0;
+
 		
 		
-		return true;
+		//GUI.removeOwner(playerInventory[i]);
+		
+		if(bid == 0) {
+			field.setOwner(null);
+			return false;
+		} else {
+			field.setOwner(winner);
+			return true;
+		}
+
 	}
-	
-	
 	
 }
