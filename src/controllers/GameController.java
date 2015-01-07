@@ -89,8 +89,35 @@ public class GameController {
 					break;
 				}
 			}
+			
 			dieOne = dice.roll();
 			dieTwo = dice.roll();
+			
+			if(activePlayer.isImPrisoned()){
+				if(display.rollOrPay().equals("Betal")){
+					activePlayer.withdraw(1000);
+					activePlayer.setImPrisoned(false);
+					activePlayer.setTimeInJail(0);
+				}
+				else{
+					display.setDice(dieOne, dieTwo);
+					if(dieOne==dieTwo){
+						activePlayer.setImPrisoned(false);
+						activePlayer.setTimeInJail(0);
+					}
+					else{
+						activePlayer.setTimeInJail(activePlayer.getTimeInJail()+1);
+						if(activePlayer.getTimeInJail()>3){
+							activePlayer.withdraw(1000);
+							activePlayer.setImPrisoned(false);
+							activePlayer.setTimeInJail(0);
+						}
+						else{
+							continue;
+						}
+					}
+				}
+			}
 			display.setDice(dieOne, dieTwo);
 			activePlayer.move(dieOne+dieTwo);
 			display.updateBalance(activePlayer.getName(), activePlayer.getBalance());
