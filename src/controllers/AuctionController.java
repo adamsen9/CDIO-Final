@@ -13,12 +13,13 @@ public class AuctionController {
 	
 	public boolean Auction(GUIManager GUI, Player[] auctioneers, Ownable field, boolean bankruptcy){
 		if(bankruptcy == true) {
-			
+			GUI.sendMessage("Der bliver afholdt tvangsauktion af feltet" + field.getName() + ".");
 		} else {
-			
+			GUI.sendMessage("Der bliver afholdt auktion af feltet " + field.getName() + ".");	
 		}
 		
 		Player winner = new Player();
+		
 		int bid = 0;
 		
 		//GUI.removeOwner(playerInventory[i]);

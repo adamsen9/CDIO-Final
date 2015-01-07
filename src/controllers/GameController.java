@@ -61,6 +61,9 @@ public class GameController {
 		players[1] = new Player(1, "Mogens");
 		display.addPlayer("Mogens", 30000, colors[1]);
 		
+		players[2] = new Player(2, "Karsten");
+		display.addPlayer("Karsten", 30000, colors[2]);
+		
 		//loop er får vores spil til at køre.
 		while(true){
 			activePlayer = players[turn];
@@ -80,31 +83,36 @@ public class GameController {
 				display.winning(winningPlayer.getName());
 				break;
 			}
-			while (hej){
-				String result = display.roll(activePlayer.getName());
-				if(result == "Køb hus/hotel"){
-					int[] foo = activePlayer.getInventory();
-					for(int i = 0; i < foo.length; i++){
-						
-					}
-				} else{
-					hej = false;
-				}
-			}
-			
 			Player[] auctioneers = new Player[players.length];
-			
 			
 			//Players who can participiate in the auction is added to the crowd
 			for(int i = 0; i < players.length; i++) {
-				if(players[i].getId() != activePlayer.getId() && !(players[i].isHasLost())) {
-					System.out.print("Spiller" + players[i].getId() + "er en auktionsgænger");
+				if(!(players[i] == null)) {
+					if(players[i].getId() != activePlayer.getId()){
+						System.out.println("Spiller " + players[i].getId() + " er en auktionsgænger");
+					
+					}
 				}
+
 			}
 			
-			auctionController.Auction(display, auctioneers, (Ownable) board.getField(40), false);
+			auctionController.Auction(display, auctioneers, (Ownable) board.getField(39), false);
 			
+			
+			while (true){
+				String result = display.roll(activePlayer.getName());
+				if(result == "Køb hus/hotel"){
+					int[] ownedInCategory = activePlayer.getOwnedInCategory();
+					String[] owned;
+					for(int i = 0; i < ownedInCategory.length; i++){
+						
+					}
+				} else{
+					break;
+				}
+			}
 			hej = true;
+			
 			dieOne = dice.roll();
 			dieTwo = dice.roll();
 			display.setDice(dieOne, dieTwo);
