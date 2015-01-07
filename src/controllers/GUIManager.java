@@ -128,6 +128,10 @@ public class GUIManager {
 		return GUI.getUserButtonPressed("Det er " + name + "'s tur. Tryk på knappen for at kaste terningerne.", "Kast", "Køb hus/hotel");
 	}
 	
+	public void rollJail(){
+		GUI.getUserButtonPressed("Slå to ens for at blive løsladt", "Kast");
+	}
+	
 	public int movePlayer(int prevField, int field, String name){
 		if (prevField!=0) GUI.removeCar(prevField, name);
 		GUI.setCar(field, name);

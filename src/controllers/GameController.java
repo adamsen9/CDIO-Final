@@ -100,6 +100,7 @@ public class GameController {
 					activePlayer.setTimeInJail(0);
 				}
 				else{
+					display.rollJail();
 					display.setDice(dieOne, dieTwo);
 					if(dieOne==dieTwo){
 						activePlayer.setImPrisoned(false);
