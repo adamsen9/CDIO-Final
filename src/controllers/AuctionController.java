@@ -48,7 +48,7 @@ public class AuctionController {
 			for(int i = 0; i < auctioneers.length; i++) {
 				
 				if((auctioneers[i] != null)) {
-					if(auctioneers[i].getBalance() < bid) {
+					if(auctioneers[i].getBalance() <= bid) {
 						GUI.sendMessage(auctioneers[i].getName() + " har ikke længere råd til at byde på auktionen og er automatisk ude");
 						auctioneers[i] = null;
 					} else {
