@@ -12,7 +12,7 @@ public class Player{
 	private int numberOfLaborCampsOwned = 0;
 	private boolean hasLost = false;
 	private int[] inventory = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-	private int[] OwnedInCategory = {0,0,0,0,0,0,0,0};
+	private int[] ownedInCategory = {0,0,0,0,0,0,0,0};
 	private int numberOfFieldsOwned = 0;
 	private int wealthOfFieldsOwned = 0;
 	private int timeInJail = 0;
@@ -186,6 +186,14 @@ public class Player{
 
 	public void setImPrisoned(boolean imPrisoned) {
 		this.imPrisoned = imPrisoned;
+	}
+	
+	public int[] getOwnedInCategory(){
+		return ownedInCategory;
+	}
+	
+	public void setOwnedInCategory(int value, int index){
+		ownedInCategory[index] = value;
 	}
 
 }
