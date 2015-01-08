@@ -6,4 +6,8 @@ public class OurChance extends OurField{
 		this.setFieldId(fieldId);
 		this.setType("Chance");
 	}
+	
+	
+	
+	
 }
