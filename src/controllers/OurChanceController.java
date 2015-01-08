@@ -6,19 +6,33 @@ import entities.Die;
 import entities.Player;
 import fields.OurField;
 import entities.OurChanceCard;
+import controllers.OurJailController;
 
 
 	public class OurChanceController extends FieldController{
 		OurChanceCard[] liste = new OurChanceCard[5];
 		private Random rnd = new Random();
 		int FaceValue;
+		OurJailController JailTime;
 		
 	public OurChanceController() {
 		liste[0] = new OurChanceCard("Ryk 2 felter tilbage", "ryk", -2);
 		liste[1] = new OurChanceCard("Ryk 2 felter frem","ryk", 2);
-		//liste[2] = new OurChanceCard("jeg er kort nr 3", "betal", 3000);
-		//liste[3] = new OurChanceCard("jeg er kort nr 4", "ryk", 4);
-		//liste[4] = new OurChanceCard("jeg er kort nr 5", "betal", 5000);	
+		liste[2] = new OurChanceCard("Der er kommet voldsomme renter på din vaffelis, betal 1500,-", "betal", 1500);
+		liste[3] = new OurChanceCard("DU HAR VUNDET I LOTTO, TILLYKE, MODTAG 1000,-", "modtag", 1000);
+		liste[4] = new OurChanceCard("Du har stjålet en cykel og skal i fængsel", "fængsel", 0);
+		liste[5] = new OurChanceCard("Du har fundet en sjælden fugl, og sælger den, modtag 500,-", "modtag", 500);
+		liste[6] = new OurChanceCard("Du var ude og handle og fandt en forladt pung, modtag 600,-", "modtag", 600);
+		liste[7] = new OurChanceCard("Du skulle alligevel ikke adoptere en lille asiater modtag 1000,-", "modtag", 1000);
+		liste[8] = new OurChanceCard("Du sælger din ene nyrer, til en velhavende kineser, modtag 2000,-", "modtag", 2000);
+		liste[9] = new OurChanceCard("Du er enelig arving til din griske gnier til en gammel tante, modtag 3500,-", "modtag", 2000);
+		liste[10] = new OurChanceCard("Ryk frem til Strandvejen","Strandvejen", 0);
+		liste[11] = new OurChanceCard("Ryk frem til Rådhuspladsen","Rådhuspladsen", 0);
+		liste[12] = new OurChanceCard("Ryk frem til Østerbro","Østerbro", 0);
+		liste[13] = new OurChanceCard("Ryk frem til Start","Start", 0);
+		liste[14] = new OurChanceCard("Ryk frem til Gl. Kongevej","Gl.Kongevej", 0);
+		liste[15] = new OurChanceCard("Ryk frem til Vimmelskaftet","Vimmelskaftet", 0);
+		liste[16] = new OurChanceCard("Ryk frem til Kongens Nytorv","Kongens Nytorv", 0);
 	}
 	
 	public void putCardOnStack(GUIManager display){
@@ -33,19 +47,36 @@ import entities.OurChanceCard;
 			OurField field, Die die) {
 		boolean[] returnValue = {true, false};
 		switch (liste[FaceValue].getText()) {
-		case ("Ryk 2 felter tilbage"):
+		case ("Ryk"):
 			display.sendMessage(liste[FaceValue].getText());
 			display.movePlayer(field.getFieldId(), field.getFieldId()+liste[FaceValue].getAmount(), player.getName());
 			player.move(liste[FaceValue].getAmount());
+			returnValue[1] = true;
 			break;
 			
-		case ("Ryk 2 felter frem"):
+		case ("betal"):
 			display.sendMessage(liste[FaceValue].getText());
-			display.movePlayer(field.getFieldId(), field.getFieldId()+liste[FaceValue].getAmount() , player.getName());
-			player.move(liste[FaceValue].getAmount());
+			//vi tager dine penge, aktive spiller
+			returnValue[0] = player.withdraw(liste[FaceValue].getAmount());
+			// vi har returnValue med her, da han teknisk set godt kan tabe ved at betale.
+			break;
+			
+		case ("modtag"):
+			display.sendMessage(liste[FaceValue].getText());
+			//vi giver dig penge, aktive spiller
+			player.deposit(liste[FaceValue].getAmount());
 			break;
 			
 			
+		case ("fængsel"):
+			display.sendMessage(liste[FaceValue].getText());
+			JailTime.PutInJail(player, display);
+			break;
+			
+		case ("Strandvejenl"):
+			display.sendMessage(liste[FaceValue].getText());
+			landOnField
+			break;
 
 
 		}
