@@ -201,7 +201,9 @@ public class GameController {
                         
 			//Logik til at kontrollere hvilket felt der er landet på.
 			currentField = board.getField(activePlayer.getField() - 1);
-			fieldController[activePlayer.getField() - 1].landOnField(activePlayer, display, currentField, dice);
+			if(!fieldController[activePlayer.getField() - 1].landOnField(activePlayer, display, currentField, dice)){
+				bankruptcy(turn);
+			}
 			//Opdatering af gameboard
 			if (DTurn == true){
 				DTurn = false;
