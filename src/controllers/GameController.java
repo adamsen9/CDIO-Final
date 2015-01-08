@@ -1,6 +1,7 @@
 package controllers;
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import entities.Die;
 import entities.GameBoard;
@@ -85,16 +86,22 @@ public class GameController {
 				String result = display.roll(activePlayer.getName());
 				if(result == "Køb hus/hotel"){
 					int[] ownedInCategory = activePlayer.getOwnedInCategory();
+					System.out.println(activePlayer.getName() + Arrays.toString(ownedInCategory));
 					ArrayList<String> owned = new ArrayList<String>();
 					for(int i = 0; i < ownedInCategory.length; i++){
 						if((ownedInCategory[i] == 2 && (i == 0 || i == 7)) || ownedInCategory[i] == 3){
+							System.out.println("hej");
 							ArrayList<OurField> foo = board.getAllInCategory(i);
+							System.out.println(foo.size());
 							for(int j = 0; j < foo.size(); j++){
 								owned.add(foo.get(j).getName());
+								System.out.println("KØRER RUNDT");
 							}
 						}
 					}
+					System.out.println("owned size "+owned.size());
 					if(owned.size() > 1){
+						System.out.println("OWNED OVER 1");
 						String nameOfPlacement = display.chooseToPlaceHouse(owned);
 						OurStreet placement = (OurStreet) board.getFieldWhereName(nameOfPlacement);
 						if(activePlayer.getBalance() < placement.getHousePrice()){
@@ -148,8 +155,9 @@ public class GameController {
 					}
 				}
 			}
-			display.setDice(dieOne, dieTwo);
-			activePlayer.move(dieOne+dieTwo);
+//			display.setDice(dieOne, dieTwo);
+//			activePlayer.move(dieOne+dieTwo);
+			activePlayer.move(display.getUserInteger(activePlayer.getName() +", indtast hvad du vil slå:"));
 			display.updateBalance(activePlayer.getName(), activePlayer.getBalance());
 			
 			//Spiller bevæger sig
