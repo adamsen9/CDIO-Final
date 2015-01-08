@@ -227,7 +227,9 @@ public class GUIManager {
 	public void updateHouses(int fieldNumber, int numberOfHouses){
 		GUI.setHouses(fieldNumber, numberOfHouses);
 	}
-	
+	public void setcard(String text){
+		GUI.setNextChanceCardText(text);
+	}
 }
 
 

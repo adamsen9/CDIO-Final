@@ -46,6 +46,7 @@ public class GameController {
 		display = new GUIManager();
 		display.create(board);
 		
+		
 		//Vælg antal spillere
 		//numberOfPlayers = display.getNumberOfPlayers();
 //		for(int i = 0; i < numberOfPlayers; i++){
@@ -192,6 +193,7 @@ public class GameController {
 				break;
 			case("Chance"):
 				chanceController.landOnField(activePlayer, display, currentField, dice);
+				
 				break;
 			}
 			//Opdatering af gameboard
