@@ -10,7 +10,7 @@ import controllers.OurJailController;
 
 
 	public class OurChanceController extends FieldController{
-		OurChanceCard[] liste = new OurChanceCard[5];
+		OurChanceCard[] liste = new OurChanceCard[17];
 		private Random rnd = new Random();
 		int FaceValue;
 		OurJailController JailTime;
@@ -36,7 +36,7 @@ import controllers.OurJailController;
 	}
 	
 	public void putCardOnStack(GUIManager display){
-		FaceValue = (int) rnd.nextInt(1);
+		FaceValue = (int) rnd.nextInt(17);
 		display.setcard(liste[FaceValue].getText() + ". " +  liste[FaceValue].getEffect() +  " " + liste[FaceValue].getAmount());
 		
 	}
@@ -46,19 +46,20 @@ import controllers.OurJailController;
 	public boolean[] landOnField(Player player, GUIManager display,
 			OurField field, Die die) {
 		boolean[] returnValue = {true, false};
-		switch (liste[FaceValue].getText()) {
-		case ("Ryk"):
-			display.sendMessage(liste[FaceValue].getText());
-			display.movePlayer(field.getFieldId(), field.getFieldId()+liste[FaceValue].getAmount(), player.getName());
-			player.move(liste[FaceValue].getAmount());
-			returnValue[1] = true;
-			break;
+		switch (liste[FaceValue].getEffect()) {
 			
 		case ("betal"):
 			display.sendMessage(liste[FaceValue].getText());
 			//vi tager dine penge, aktive spiller
 			returnValue[0] = player.withdraw(liste[FaceValue].getAmount());
 			// vi har returnValue med her, da han teknisk set godt kan tabe ved at betale.
+			break;
+			
+		case ("ryk"):
+			display.sendMessage(liste[FaceValue].getText());
+			display.movePlayer(field.getFieldId(), field.getFieldId()+liste[FaceValue].getAmount(), player.getName());
+			player.move(liste[FaceValue].getAmount());
+			returnValue[1] = true;
 			break;
 			
 		case ("modtag"):
@@ -73,14 +74,44 @@ import controllers.OurJailController;
 			JailTime.PutInJail(player, display);
 			break;
 			
-		case ("Strandvejenl"):
+		case ("Strandvejen"):
 			display.sendMessage(liste[FaceValue].getText());
-			landOnField
+			player.setField(20, player.getField());
+			returnValue[1] = true;
+			break;
+			
+		case ("Rådhuspladsen"):
+			display.sendMessage(liste[FaceValue].getText());
+			player.setField(40, player.getField());
+			returnValue[1] = true;
+			break;
+			
+		case ("Start"):
+			display.sendMessage(liste[FaceValue].getText());
+			player.setField(1, player.getField());
+			returnValue[1] = true;
+			break;
+			
+		case ("Gammelkongevej"):
+			display.sendMessage(liste[FaceValue].getText());
+			player.setField(15, player.getField());
+			returnValue[1] = true;
+			break;
+			
+		case ("Vimmmelskaftet"):
+			display.sendMessage(liste[FaceValue].getText());
+			player.setField(33, player.getField());
+			returnValue[1] = true;
+			break;
+			
+		case ("Kongens Nytorv"):
+			display.sendMessage(liste[FaceValue].getText());
+			player.setField(28, player.getField());
+			returnValue[1] = true;
 			break;
 
-
 		}
-		
+		putCardOnStack(display);
 		return returnValue;
 	}
 	
