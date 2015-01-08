@@ -1,6 +1,7 @@
 package controllers;
 
 import java.awt.Color;
+import java.util.ArrayList;
 
 import entities.GameBoard;
 import fields.*;
@@ -206,7 +207,10 @@ public class GUIManager {
 		return GUI.getUserButtonPressed("Vil du betale 1000 dkk eller rulle en gang med terningerne", "Betal","Rul");
 	}
 	
-	
+	public String chooseToPlaceHouse(ArrayList<String> owned){
+		String[] buildAble = owned.toArray(new String[owned.size()]);
+		return GUI.getUserSelection("Vælg hvilken grund du gerne vil bygge et hus på.", buildAble);
+	}
 	
 	
 }
