@@ -83,17 +83,13 @@ public class GameController {
 			while (true){
 				String result = display.roll(activePlayer.getName());
 				if(result == "Køb hus/hotel"){
-					int[] ownedInCategory = activePlayer.getOwnedInCategory();
 					ArrayList<String> owned = new ArrayList<String>();
-					for(int i = 0; i < ownedInCategory.length; i++){
-						if((ownedInCategory[i] == 2 && (i == 0 || i == 7)) || ownedInCategory[i] == 3){
-							ArrayList<OurField> foo = board.getAllInCategory(i);
-							System.out.println(foo.size());
-							for(int j = 0; j < foo.size(); j++){
-								owned.add(foo.get(j).getName());
-							}
-						}
+					ArrayList<OurStreet> allBuildable = board.getBuildableFields(activePlayer.getId());
+					System.out.println(allBuildable.size());
+					for(int j = 0; j < allBuildable.size(); j++){
+						owned.add(allBuildable.get(j).getName());
 					}
+					
 					System.out.println("owned size "+owned.size());
 					if(owned.size() > 1){
 						String nameOfPlacement = display.chooseToPlaceHouse(owned);
@@ -105,10 +101,11 @@ public class GameController {
 							activePlayer.withdraw(placement.getHousePrice());
 							placement.addHouse();
 							display.updateHouses(placement.getFieldId(), placement.getNumberOfHouses());
+							display.updateBalance(activePlayer.getName(), activePlayer.getBalance());
 						}
 						
 					}
-				} else{
+				}else{
 					break;
 				}
 			}

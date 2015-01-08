@@ -73,17 +73,73 @@ public class GameBoard {
 		return s;
 	}
 	
-	public ArrayList<OurField> getAllInCategory(int category){
-		ArrayList<OurField> categoryFields = new ArrayList<OurField>();
+	public ArrayList<OurStreet> getAllInCategory(int category){
+		ArrayList<OurStreet> categoryFields = new ArrayList<OurStreet>();
 		for(int i = 0; i < fields.length; i++){
 			if (fields[i].getType() == "Street"){
 				OurStreet street = (OurStreet) fields[i];
 				if(street.getCategory() == category+1){
-					categoryFields.add(fields[i]);
+					categoryFields.add(street);
 				}
 			}
 		}
 		return categoryFields;
+	}
+	
+	public ArrayList<OurStreet> getBuildableFields(int playerId){
+		ArrayList<OurStreet> buildableFields = new ArrayList<OurStreet>();
+		for(int i = 1; i <= 8; i++){
+			ArrayList<OurStreet> categoryFields = getAllInCategory(i-1);
+			int counter = 0;
+			System.out.println(categoryFields.size());
+			for(int j = 0; j < categoryFields.size(); j++){
+				System.out.println(categoryFields.get(j).getName());
+				if(categoryFields.get(j).isOwned()){
+					if(categoryFields.get(j).getOwner().getId() == playerId){
+						counter++;
+					}
+				}
+			}
+			if (counter != categoryFields.size()) continue; // skips this category if the player doens't own all streets in it
+			// Checks if a field is allowed to be build on.
+			if(categoryFields.size() == 2){
+				int numberOfHousesZero = categoryFields.get(0).getNumberOfHouses();
+				int numberOfHousesOne = categoryFields.get(1).getNumberOfHouses();
+				if(numberOfHousesZero == numberOfHousesOne){
+					buildableFields.add(categoryFields.get(0));
+					buildableFields.add(categoryFields.get(1));
+				} else if(numberOfHousesZero > numberOfHousesOne){
+					buildableFields.add(categoryFields.get(1));
+				} else if(numberOfHousesZero < numberOfHousesOne){
+					buildableFields.add(categoryFields.get(0));
+				}
+			} else if(categoryFields.size() == 3){
+				int numberOfHousesZero = categoryFields.get(0).getNumberOfHouses();
+				int numberOfHousesOne = categoryFields.get(1).getNumberOfHouses();
+				int numberOfHousesTwo = categoryFields.get(2).getNumberOfHouses();
+				if(numberOfHousesZero == numberOfHousesOne && numberOfHousesZero == numberOfHousesTwo){
+					buildableFields.add(categoryFields.get(0));
+					buildableFields.add(categoryFields.get(1));
+					buildableFields.add(categoryFields.get(2));
+				} else if(numberOfHousesZero == numberOfHousesOne && numberOfHousesZero > numberOfHousesTwo){
+					buildableFields.add(categoryFields.get(2));
+				} else if(numberOfHousesZero > numberOfHousesOne && numberOfHousesZero == numberOfHousesOne){
+					buildableFields.add(categoryFields.get(1));
+				} else if(numberOfHousesZero > numberOfHousesOne && numberOfHousesZero > numberOfHousesTwo){
+					buildableFields.add(categoryFields.get(1));
+					buildableFields.add(categoryFields.get(2));
+				} else if(numberOfHousesZero < numberOfHousesOne && numberOfHousesOne == numberOfHousesTwo){
+					buildableFields.add(categoryFields.get(0));
+				} else if(numberOfHousesZero < numberOfHousesOne && numberOfHousesOne > numberOfHousesTwo){
+					buildableFields.add(categoryFields.get(0));
+					buildableFields.add(categoryFields.get(2));
+				} else if(numberOfHousesZero < numberOfHousesTwo && numberOfHousesOne < numberOfHousesTwo){
+					buildableFields.add(categoryFields.get(0));
+					buildableFields.add(categoryFields.get(1));
+				}
+			}
+		}
+		return buildableFields;
 	}
 	
 	public OurField getFieldWhereName(String name){
