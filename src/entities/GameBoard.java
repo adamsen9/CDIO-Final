@@ -79,7 +79,7 @@ public class GameBoard {
 		for(int i = 0; i < fields.length; i++){
 			if (fields[i].getType() == "Street"){
 				OurStreet street = (OurStreet) fields[i];
-				if(street.getCategory() == category){
+				if(street.getCategory() == category+1){
 					categoryFields.add(fields[i]);
 				}
 			}

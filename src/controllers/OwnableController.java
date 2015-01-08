@@ -9,7 +9,7 @@ public abstract class OwnableController extends FieldController {
 		
 		if(player.getBalance() >= field.getPrice()){
 			player.withdraw(field.getPrice());
-			if(field.getType() == "street"){
+			if(field.getType() == "Street"){
 				setStreet((OurStreet) field);
 				player.addToInventory(field.getFieldPossition(), field.getPrice(), street.getCategory());
 			} else{
