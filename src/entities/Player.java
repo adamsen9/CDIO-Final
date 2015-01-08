@@ -46,6 +46,13 @@ public class Player{
 		this.field = field;
 	}
 	
+	public void setField(int field, int previousField){
+		this.field = field;
+		if(field < previousField){
+			acc.deposit(4000);
+		}
+	}
+	
 	public int getField(){
 		return this.field;
 	}

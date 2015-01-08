@@ -132,11 +132,13 @@ public class GameController {
 					ArrayList<OurStreet> allBuildable = board.getBuildableFields(activePlayer.getId());
 					System.out.println(allBuildable.size());
 					for(int j = 0; j < allBuildable.size(); j++){
-						owned.add(allBuildable.get(j).getName());
+						if(allBuildable.get(j).getNumberOfHouses() <= 5){
+							owned.add(allBuildable.get(j).getName());
+						}
 					}
 					
 					System.out.println("owned size "+owned.size());
-					if(owned.size() > 1){
+					if(owned.size() > 0){
 						String nameOfPlacement = display.chooseToPlaceHouse(owned);
 						OurStreet placement = (OurStreet) board.getFieldWhereName(nameOfPlacement);
 						if(activePlayer.getBalance() < placement.getHousePrice()){
