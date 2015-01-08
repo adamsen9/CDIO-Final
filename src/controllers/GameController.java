@@ -10,13 +10,57 @@ import fields.*;
 
 public class GameController {
 	private OurField currentField;
+	private OurStartController startController = new OurStartController();
 	private OurStreetController streetController = new OurStreetController();
 	private OurBreweryController breweryController = new OurBreweryController();
 	private OurShippingController shippingController = new OurShippingController();
-	private OurParkingController refugeController = new OurParkingController();
+	private OurParkingController parkingController = new OurParkingController();
 	private OurTaxController taxController = new OurTaxController();
 	private OurJailController jailController = new OurJailController();
 	private OurChanceController chanceController = new OurChanceController();
+	private FieldController[] fieldController = {
+			startController, //0
+			streetController, //1
+			chanceController, //2
+			streetController, //3
+			taxController, //4
+			shippingController, //5
+			streetController, //6
+			chanceController, //7
+			streetController, //8
+			streetController, //9
+			jailController, //10
+			streetController, //11
+			breweryController, //12
+			streetController, //13
+			streetController, //14
+			shippingController, //15
+			streetController, //16
+			chanceController, //17
+			streetController, //18
+			streetController, //19
+			parkingController, //20
+			streetController, //21
+			chanceController, //22
+			streetController, //23
+			streetController, //24
+			shippingController, //25
+			streetController, //26
+			streetController, //27
+			breweryController, //28
+			streetController, //29
+			jailController, //30
+			streetController, //31
+			streetController, //32
+			chanceController, //33
+			streetController, //34
+			shippingController, //35
+			chanceController, //36
+			streetController, //37
+			taxController, //38
+			streetController //39
+		};
+			
 	private Player activePlayer;
 	private GameBoard board;
 	private Die dice;
@@ -156,46 +200,8 @@ public class GameController {
 			display.movePlayer(activePlayer.getPrevField(), activePlayer.getField(), activePlayer.getName());
                         
 			//Logik til at kontrollere hvilket felt der er landet på.
-			
 			currentField = board.getField(activePlayer.getField() - 1);
-			switch(currentField.getType()) {
-			case("Street"):
-				if(!streetController.landOnField(activePlayer, display, currentField, dice)){
-					bankruptcy(turn);
-				}
-				break;
-				
-			case("Brewery"):
-				if(!breweryController.landOnField(activePlayer, display, currentField, dice)){
-					bankruptcy(turn);
-				}
-				break;
-				
-			case("Shipping"):
-				if(!shippingController.landOnField(activePlayer, display, currentField, dice)){
-					bankruptcy(turn);
-				}
-				break;
-				
-			case("Parking"):
-				refugeController.landOnField(activePlayer, display, currentField, dice);
-				break;
-				
-			case("Tax"):
-				if(!taxController.landOnField(activePlayer, display, currentField, dice)){
-					bankruptcy(turn);
-				}
-				break;
-			case("Start"):
-				break;
-			case("Jail"):
-				jailController.landOnField(activePlayer, display, currentField, dice);
-				break;
-			case("Chance"):
-				chanceController.landOnField(activePlayer, display, currentField, dice);
-				
-				break;
-			}
+			fieldController[activePlayer.getField() - 1].landOnField(activePlayer, display, currentField, dice);
 			//Opdatering af gameboard
 			if (DTurn == true){
 				DTurn = false;
