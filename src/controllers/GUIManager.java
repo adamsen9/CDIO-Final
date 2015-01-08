@@ -114,6 +114,10 @@ public class GUIManager {
 		GUI.setDice(dieOne, 0, 4, 7, dieTwo, 0, 5, 7);
 	}
 	
+	public int getUserInteger(String msg) {
+		return GUI.getUserInteger(msg, 0, 40);
+	}
+	
 	public int getNumberOfPlayers(){
 		if(state == "test"){
 			return 5;
