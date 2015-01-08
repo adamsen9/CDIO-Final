@@ -18,14 +18,14 @@ import controllers.OurJailController;
 	public OurChanceController() {
 		liste[0] = new OurChanceCard("Ryk 2 felter tilbage", "ryk", -2);
 		liste[1] = new OurChanceCard("Ryk 2 felter frem","ryk", 2);
-		liste[2] = new OurChanceCard("Der er kommet voldsomme renter på din vaffelis, betal 1500,-", "betal", 1500);
-		liste[3] = new OurChanceCard("DU HAR VUNDET I LOTTO, TILLYKE, MODTAG 1000,-", "modtag", 1000);
-		liste[4] = new OurChanceCard("Du har stjålet en cykel og skal i fængsel", "fængsel", 0);
-		liste[5] = new OurChanceCard("Du har fundet en sjælden fugl, og sælger den, modtag 500,-", "modtag", 500);
-		liste[6] = new OurChanceCard("Du var ude og handle og fandt en forladt pung, modtag 600,-", "modtag", 600);
-		liste[7] = new OurChanceCard("Du skulle alligevel ikke adoptere en lille asiater modtag 1000,-", "modtag", 1000);
-		liste[8] = new OurChanceCard("Du sælger din ene nyrer, til en velhavende kineser, modtag 2000,-", "modtag", 2000);
-		liste[9] = new OurChanceCard("Du er enelig arving til din griske gnier til en gammel tante, modtag 3500,-", "modtag", 2000);
+		liste[2] = new OurChanceCard("Der er kommet voldsomme renter på din vaffelis,", "betal", 1500);
+		liste[3] = new OurChanceCard("DU HAR VUNDET I LOTTO, TILLYKE", "modtag", 1000);
+		liste[4] = new OurChanceCard("Du har stjålet en cykel og skal i", "fængsel", 0);
+		liste[5] = new OurChanceCard("Du har fundet en sjælden fugl, og sælger den", "modtag", 500);
+		liste[6] = new OurChanceCard("Du var ude og handle og fandt en forladt pung", "modtag", 600);
+		liste[7] = new OurChanceCard("Du skulle alligevel ikke adoptere en lille asiater", "modtag", 1000);
+		liste[8] = new OurChanceCard("Du sælger din ene nyrer, til en velhavende kineser", "modtag", 2000);
+		liste[9] = new OurChanceCard("Du er enelig arving til din griske, gamle, gnier af en tante", "modtag", 2000);
 		liste[10] = new OurChanceCard("Ryk frem til Strandvejen","Strandvejen", 0);
 		liste[11] = new OurChanceCard("Ryk frem til Rådhuspladsen","Rådhuspladsen", 0);
 		liste[12] = new OurChanceCard("Ryk frem til Østerbro","Østerbro", 0);
@@ -77,36 +77,42 @@ import controllers.OurJailController;
 		case ("Strandvejen"):
 			display.sendMessage(liste[FaceValue].getText());
 			player.setField(20, player.getField());
+			display.movePlayer(field.getFieldId(),20, player.getName());			
 			returnValue[1] = true;
 			break;
 			
 		case ("Rådhuspladsen"):
 			display.sendMessage(liste[FaceValue].getText());
 			player.setField(40, player.getField());
+			display.movePlayer(field.getFieldId(),40, player.getName());			
 			returnValue[1] = true;
 			break;
 			
 		case ("Start"):
 			display.sendMessage(liste[FaceValue].getText());
 			player.setField(1, player.getField());
+			display.movePlayer(field.getFieldId(),1, player.getName());
 			returnValue[1] = true;
 			break;
 			
 		case ("Gammelkongevej"):
 			display.sendMessage(liste[FaceValue].getText());
 			player.setField(15, player.getField());
+			display.movePlayer(field.getFieldId(),15, player.getName());
 			returnValue[1] = true;
 			break;
 			
 		case ("Vimmmelskaftet"):
 			display.sendMessage(liste[FaceValue].getText());
 			player.setField(33, player.getField());
+			display.movePlayer(field.getFieldId(),33, player.getName());
 			returnValue[1] = true;
 			break;
 			
 		case ("Kongens Nytorv"):
 			display.sendMessage(liste[FaceValue].getText());
 			player.setField(28, player.getField());
+			display.movePlayer(field.getFieldId(),28, player.getName());			
 			returnValue[1] = true;
 			break;
 

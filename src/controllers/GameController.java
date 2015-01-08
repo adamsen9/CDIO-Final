@@ -89,6 +89,7 @@ public class GameController {
 		//Kør spillet
 		display = new GUIManager();
 		display.create(board);
+		chanceController.putCardOnStack(display);
 		
 		
 		//Vælg antal spillere
