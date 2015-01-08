@@ -12,6 +12,7 @@ public class OurChanceController extends FieldController{
 	OurChanceCard[] liste = new OurChanceCard[5];
 public OurChanceController() {
 	
+	
 		
 	}
 	

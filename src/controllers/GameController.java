@@ -45,7 +45,6 @@ public class GameController {
 		//Kør spillet
 		display = new GUIManager();
 		display.create(board);
-		chanceController.putChanceCard(display);
 		
 		
 		//Vælg antal spillere
