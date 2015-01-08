@@ -65,4 +65,12 @@ public class OurStreet extends Ownable{
 	public void setCategory(int category) {
 		this.category = category;
 	}
+	
+	public void addHouse(){
+		numberOfHouses++;
+	}
+
+	public int getNumberOfHouses() {
+		return numberOfHouses;
+	}
 }

@@ -77,8 +77,22 @@ public class GameBoard {
 	public ArrayList<OurField> getAllInCategory(int category){
 		ArrayList<OurField> categoryFields = new ArrayList<OurField>();
 		for(int i = 0; i < fields.length; i++){
-			categoryFields.add(fields[i]);
+			if (fields[i].getType() == "Street"){
+				OurStreet street = (OurStreet) fields[i];
+				if(street.getCategory() == category){
+					categoryFields.add(fields[i]);
+				}
+			}
 		}
 		return categoryFields;
+	}
+	
+	public OurField getFieldWhereName(String name){
+		for(int i = 0; i < fields.length; i++){
+			if(fields[i].getName() == name){
+				return fields[i];
+			}
+		}
+		return null;
 	}
 }
