@@ -11,7 +11,7 @@ public class AuctionController {
 		
 	}
 	
-	public boolean Auction(GUIManager GUI, Player[] auctioneers, Ownable field, boolean bankruptcy){
+	public Player Auction(GUIManager GUI, Player[] auctioneers, Ownable field, boolean bankruptcy){
 		int bidders = auctioneers.length;
 		
 		for(int i = 0; i < auctioneers.length; i++) {
@@ -44,6 +44,8 @@ public class AuctionController {
 		Player highestBidder = null;
 		String choice = "";
 		
+		int c = 0;
+		outerloop:
 		while(true) {
 			for(int i = 0; i < auctioneers.length; i++) {
 				
@@ -51,6 +53,7 @@ public class AuctionController {
 					if(auctioneers[i].getBalance() <= bid) {
 						GUI.sendMessage(auctioneers[i].getName() + " har ikke længere råd til at byde på auktionen og er automatisk ude");
 						auctioneers[i] = null;
+						bidders--;
 					} else {
 						choice = GUI.chooseToBid(auctioneers[i].getName(), bid);
 						
@@ -66,22 +69,18 @@ public class AuctionController {
 						}
 					}
 				}
+				if(c >= 1 && bidders <= 1) {
+					break outerloop;
+				}
 			}
-			
-			if(bidders == 1) {
-				break;
-			}
+			c++;
 		}
-		
-		
 		
 		if(highestBidder == null) {
-			return false;
+			return null;
 		} else {
-			return true;
+			return highestBidder;
 		}
-		
-		//GUI.removeOwner(playerInventory[i]);
 	}
 	
 }

@@ -220,22 +220,22 @@ public class GUIManager {
 				input = GUI.getUserString("Indtast venligst et bud højere end " + bid);
 				try {
 					newBid = Integer.parseInt(input);
-					cinput = false;
+					if(newBid <= bid) {
+						GUI.getUserButtonPressed("Du skal som minimum give et højere bud end det tidligere bud, der er på " + bid, "Prøv igen");
+					}
+					if(auctioneerBalance < newBid) {
+						GUI.getUserButtonPressed("Du kan ikke byde mere end du har. Du har " + auctioneerBalance, "Prøv igen");
+					}
+					if(auctioneerBalance > newBid && newBid > bid) {
+						
+						cinput = false;
+					}
 				} catch (NumberFormatException e) {
-					System.out.println("Catchede exception");
 				}
 				
 			} while (cinput);
-			if(newBid < bid) {
-				GUI.getUserButtonPressed("Du skal som minimum give et højere bud end det tidligere bud, der er på " + bid, "Prøv igen");
-			} else if(auctioneerBalance < bid) {
-				GUI.getUserButtonPressed("Du kan ikke byde mere end du har. Du har " + auctioneerBalance, "Prøv igen");
-			} else {
-				break;
-			}
+			break;
 		}
-		
-		
 		return newBid;
 	}
 	

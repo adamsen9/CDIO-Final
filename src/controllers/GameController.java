@@ -95,6 +95,7 @@ public class GameController {
 				}
 			}
 			
+			//Auction is performed
 			auctionController.Auction(display, auctioneers, (Ownable) board.getField(39), false);
 			
 			
