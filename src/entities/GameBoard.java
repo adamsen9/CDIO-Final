@@ -86,4 +86,13 @@ public class GameBoard {
 		}
 		return categoryFields;
 	}
+	
+	public OurField getFieldWhereName(String name){
+		for(int i = 0; i < fields.length; i++){
+			if(fields[i].getName() == name){
+				return fields[i];
+			}
+		}
+		return null;
+	}
 }

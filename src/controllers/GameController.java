@@ -91,6 +91,19 @@ public class GameController {
 							}
 						}
 					}
+					if(owned.size() > 1){
+						String nameOfPlacement = display.chooseToPlaceHouse(owned);
+						OurStreet placement = (OurStreet) board.getFieldWhereName(nameOfPlacement);
+						if(activePlayer.getBalance() < placement.getHousePrice()){
+							display.sendMessage("Du har ikke nok penge til at købe dette hus");
+							continue;
+						} else{
+							activePlayer.withdraw(placement.getHousePrice());
+							placement.addHouse();
+							display.updateHouses(placement.getFieldId(), placement.getNumberOfHouses());
+						}
+						
+					}
 				} else{
 					break;
 				}

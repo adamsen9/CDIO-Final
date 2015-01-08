@@ -212,6 +212,9 @@ public class GUIManager {
 		return GUI.getUserSelection("Vælg hvilken grund du gerne vil bygge et hus på.", buildAble);
 	}
 	
+	public void updateHouses(int fieldNumber, int numberOfHouses){
+		GUI.setHouses(fieldNumber, numberOfHouses);
+	}
 	
 }
 
