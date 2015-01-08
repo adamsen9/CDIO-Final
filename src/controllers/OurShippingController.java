@@ -12,13 +12,15 @@ public class OurShippingController extends OwnableController {
 	}
 
 	@Override
-	public boolean landOnField(Player player, GUIManager display, OurField field, Die die) {
+	public boolean[] landOnField(Player player, GUIManager display, OurField field, Die die) {
 		fleet = (OurShipping) field;
+		boolean[] returnValue = {true, false};
 		if(fleet.isOwned()){
 			if(!isOwner(player, fleet)){
 					display.sendMessage(player.getName() + " er landet på " + fleet.getName() + " og skal betale " + fleet.getRent() + " kroner.");
 					//Her overføres penge fra spilleren der landte på 
-					return payRent(player, fleet);
+					returnValue[0] = payRent(player, fleet);
+					return returnValue;
 			}
 			
 		} else{
@@ -28,6 +30,6 @@ public class OurShippingController extends OwnableController {
 				}
 			}
 		}
-		return true;
+		return returnValue;
 	}
 }

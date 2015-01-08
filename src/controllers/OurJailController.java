@@ -21,17 +21,18 @@ public class OurJailController extends FieldController{
 	}
 	
 	@Override
-	public boolean landOnField(Player player, GUIManager display,
+	public boolean[] landOnField(Player player, GUIManager display,
 			OurField field, Die die) {
 		jail = (OurJail) field;
+		boolean[] returnValue = {true, false};
 		if (jail.getVisit()) {
 			//Du er på besøg i fængsel 
 			//kald på GUIManager
-			return true;
+			return returnValue;
 		}
 		else {
 			PutInJail(player,display);
-			return true;
+			return returnValue;
 		}
 	}
 

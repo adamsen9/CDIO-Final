@@ -8,10 +8,11 @@ import fields.OurField;
 public class OurStartController extends FieldController{
 
 	@Override
-	public boolean landOnField(Player player, GUIManager display,
+	public boolean[] landOnField(Player player, GUIManager display,
 			OurField field, Die die) {
 		// TODO Auto-generated method stub
-		return true;
+		boolean[] returnValue = {true, false};
+		return returnValue;
 	}
 
 }

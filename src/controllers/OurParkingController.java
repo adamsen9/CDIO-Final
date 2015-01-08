@@ -12,10 +12,11 @@ public class OurParkingController extends FieldController{
 	}
 
 	@Override
-	public boolean landOnField(Player player, GUIManager display, OurField field, Die die) {
+	public boolean[] landOnField(Player player, GUIManager display, OurField field, Die die) {
 		refuge = (OurParking) field;
+		boolean[] returnValue = {true, false};
 		display.sendMessage(player.getName() + " landede på " + refuge.getName() + " og modtager " + refuge.getBonus());
 		player.deposit(refuge.getBonus());
-		return true;
+		return returnValue;
 	}
 }

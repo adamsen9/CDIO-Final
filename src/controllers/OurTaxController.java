@@ -12,23 +12,26 @@ public class OurTaxController extends FieldController{
 	}
 
 	@Override
-	public boolean landOnField(Player player, GUIManager display, OurField field, Die die) {
-		tax =  (OurTax) field; 
+	public boolean[] landOnField(Player player, GUIManager display, OurField field, Die die) {
+		tax =  (OurTax) field;
+		boolean[] returnValue = {true, false};
 		if(tax.getTaxRate() == 0) {
 			display.sendMessage(player.getName() + " er landet på " + tax.getName() + " og skal betale " + tax.getTaxAmount() + " kroner i skat.");
-			return player.withdraw(tax.getTaxAmount());
-			
+			returnValue[0] = player.withdraw(tax.getTaxAmount());
+			return returnValue;			
 		}else {
 			switch (display.choosePayment(player.getName())) {
 			case "10%":
 				//Samlede værdi hentes
 				int totalAssets = player.getTotalAssets();
 
-				return player.withdraw((int) (totalAssets*tax.getTaxRate()));
+				returnValue[0] = player.withdraw((int) (totalAssets*tax.getTaxRate()));
+				return returnValue;
 			case "4000":
-				return player.withdraw(tax.getTaxAmount());
+				returnValue[0] = player.withdraw(tax.getTaxAmount());
+				return returnValue;
 			}
 		}
-		return true;
+		return returnValue;
 	}
 }

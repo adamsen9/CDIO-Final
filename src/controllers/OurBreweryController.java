@@ -12,8 +12,9 @@ public class OurBreweryController extends OwnableController{
 	}
 
 	@Override
-	public boolean landOnField(Player player, GUIManager display, OurField field, Die die) {
+	public boolean[] landOnField(Player player, GUIManager display, OurField field, Die die) {
 		laborCamp = (OurBrewery) field;
+		boolean[] returnValue = {true, false};
 	    if(laborCamp.isOwned()){
 	    	if(!isOwner(player, laborCamp)){
 	    			//Jeg sender en besked han skal bekræfte for at fortsætte, hvor der står hvilket felt han har landt på og hvad der skal ske
@@ -27,7 +28,8 @@ public class OurBreweryController extends OwnableController{
 	    			//Jeg sender en besked han skal bekræfte for at fortsætte, hvor der står hvad han slog og hvad han skal betale
 	    			display.sendMessage("Du har slået " + (dieOne + dieTwo) + ", og skal betale " + rent + ".");
 	    			//Jeg sender penge fra den aktive spiller til ejeren af feltet. Jeg ved han har penge nok da dette var condition til at komme herned
-	    			return payRent(player, laborCamp, (dieOne+dieTwo));
+	    			returnValue[0] = payRent(player, laborCamp, (dieOne+dieTwo));
+	    			return returnValue;
 	    	}
 	    }else{
 	    	if(display.chooseToBuyLaborCamp(laborCamp.getName(), laborCamp.getPrice(), player.getName()) == "Køb"){
@@ -36,6 +38,6 @@ public class OurBreweryController extends OwnableController{
 	    		}
 	    	}
 	    }
-		return true;
+		return returnValue;
 	}
 }

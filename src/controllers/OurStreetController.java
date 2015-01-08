@@ -10,14 +10,16 @@ public class OurStreetController extends OwnableController {
 	}
 
 	@Override
-	public boolean landOnField(Player player, GUIManager display, OurField field, Die die) {
+	public boolean[] landOnField(Player player, GUIManager display, OurField field, Die die) {
 		territory = (OurStreet) field;
+		boolean[] returnValue = {true, false};
 		if(territory.isOwned()) {
 			if(isOwner(player, territory)) {
 				display.sendMessage("Du er ejer af denne grund");
 			} else {
 				display.sendMessage(player.getName() + " er landet på " + territory.getName() + ". Grunden er ejet, du skal betale " + territory.getRent() + " i leje.");
-				return payRent(player, territory);
+				returnValue[0] =  payRent(player, territory);
+				return returnValue;
 			}
 			
 		} else {
@@ -25,6 +27,6 @@ public class OurStreetController extends OwnableController {
 				buyField(player, display, territory);
 			}
 		}
-		return true;
+		return returnValue;
 	}
 }
