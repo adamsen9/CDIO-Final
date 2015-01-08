@@ -73,7 +73,6 @@ public class GameBoard {
 		return s;
 	}
 	
-	@SuppressWarnings("null")
 	public ArrayList<OurField> getAllInCategory(int category){
 		ArrayList<OurField> categoryFields = new ArrayList<OurField>();
 		for(int i = 0; i < fields.length; i++){
