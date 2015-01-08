@@ -44,6 +44,8 @@ public class GameController {
 		//Kør spillet
 		display = new GUIManager();
 		display.create(board);
+		display.setcard("Robert er nummer et på din playlist");
+		display.setcard("9gag er tidsfordriv");
 		
 		//Vælg antal spillere
 		//numberOfPlayers = display.getNumberOfPlayers();
