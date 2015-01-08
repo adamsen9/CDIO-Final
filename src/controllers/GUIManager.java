@@ -225,7 +225,11 @@ public class GUIManager {
 	}
 	
 	public void updateHouses(int fieldNumber, int numberOfHouses){
-		GUI.setHouses(fieldNumber, numberOfHouses);
+		if(numberOfHouses == 5){
+			GUI.setHotel(fieldNumber, true);
+		} else{
+			GUI.setHouses(fieldNumber, numberOfHouses);
+		}
 	}
 	public void setcard(String text){
 		GUI.setNextChanceCardText(text);
