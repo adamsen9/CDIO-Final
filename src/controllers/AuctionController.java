@@ -11,7 +11,19 @@ public class AuctionController {
 		
 	}
 	
-	public Player Auction(GUIManager GUI, Player[] auctioneers, Ownable field, boolean bankruptcy){
+	public void Auction(GUIManager GUI, Player[] possibleAuctioneers, Player activePlayer,  Ownable field, boolean bankruptcy){
+		
+		Player[] auctioneers = new Player[possibleAuctioneers.length];
+		for(int i = 0; i < possibleAuctioneers.length; i++) {
+			if(!(possibleAuctioneers[i] == null)) {
+				if(possibleAuctioneers[i].getId() != activePlayer.getId()){
+					auctioneers[i] = possibleAuctioneers[i];
+				}
+			}
+		}
+		
+		Player auctionWinner = null;
+		int winningBid = 0;
 		int bidders = auctioneers.length;
 		
 		for(int i = 0; i < auctioneers.length; i++) {
@@ -60,8 +72,8 @@ public class AuctionController {
 						if(choice.equals("Ja") && auctioneers[i].getBalance() >= bid) {
 							//Spørg om hvor meget
 							bid = GUI.enterBid(bid, auctioneers[i].getBalance());
-							
-							highestBidder = auctioneers[i];
+							winningBid = bid;
+							auctionWinner = auctioneers[i];
 							
 						} else if(choice.equals("Nej")) {
 							auctioneers[i] = null;
@@ -76,11 +88,26 @@ public class AuctionController {
 			c++;
 		}
 		
-		if(highestBidder == null) {
-			return null;
+		if(auctionWinner == null) {
+			System.out.println("No bids");
+			GUI.sendMessage("Ingen har budt på grunden " + field.getName() + ", og den overgår derfor til banken.");
+			//Giv feltet til banken
 		} else {
-			return highestBidder;
+			for(int i = 0; i < auctioneers.length; i++) {
+				if(auctioneers[i] != null) {
+					System.out.println(i);
+					if(auctionWinner.getId() == auctioneers[i].getId()){
+						System.out.println("Vindene spiller:" + auctionWinner.getName());
+						//Overdrag grunden til den vindene spiller
+						
+						
+						//Fratræk den vindene spiller sit bud og opdater GUIen
+						auctioneers[i].withdraw(winningBid);
+						GUI.updateBalance(auctioneers[i].getName(), auctioneers[i].getBalance());
+						break;
+					}
+				}
+			}
 		}
 	}
-	
 }

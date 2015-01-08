@@ -212,8 +212,6 @@ public class GUIManager {
 	public int enterBid(int bid, int auctioneerBalance) {
 		String input = "";
 		Boolean cinput = true;
-		//ExceptionHandling
-
 		int newBid = 0;
 		while(true) {
 			do {
@@ -222,12 +220,11 @@ public class GUIManager {
 					newBid = Integer.parseInt(input);
 					if(newBid <= bid) {
 						GUI.getUserButtonPressed("Du skal som minimum give et højere bud end det tidligere bud, der er på " + bid, "Prøv igen");
-					}
+					} else
 					if(auctioneerBalance < newBid) {
 						GUI.getUserButtonPressed("Du kan ikke byde mere end du har. Du har " + auctioneerBalance, "Prøv igen");
 					}
 					if(auctioneerBalance > newBid && newBid > bid) {
-						
 						cinput = false;
 					}
 				} catch (NumberFormatException e) {

@@ -64,6 +64,9 @@ public class GameController {
 		players[2] = new Player(2, "Karsten");
 		display.addPlayer("Karsten", 30000, colors[2]);
 		
+		players[3] = new Player(3, "Finn");
+		display.addPlayer("Finn", 30000, colors[3]);
+		
 		//loop er får vores spil til at køre.
 		while(true){
 			activePlayer = players[turn];
@@ -83,20 +86,10 @@ public class GameController {
 				display.winning(winningPlayer.getName());
 				break;
 			}
-			Player[] auctioneers = new Player[players.length];
 			
-			//Players who can participiate in the auction is added to the crowd
-			for(int i = 0; i < players.length; i++) {
-				if(!(players[i] == null)) {
-					if(players[i].getId() != activePlayer.getId()){
-						System.out.println("Spiller " + players[i].getId() + " er en auktionsgænger");
-						auctioneers[i] = players[i];
-					}
-				}
-			}
-			
-			//Auction is performed
-			auctionController.Auction(display, auctioneers, (Ownable) board.getField(39), false);
+		
+			auctionController.Auction(display, players, activePlayer, (Ownable) board.getField(39), false);
+
 			
 			
 			while (true){
