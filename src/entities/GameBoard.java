@@ -37,7 +37,7 @@ public class GameBoard {
 		fields[25] = new OurShipping(4000, "DFDS Seaways", 26, 26);
 		fields[26] = new OurStreet(new int[] {450, 2200, 6600, 16000, 19500, 23000}, 5200, 3000, "Bredgade", 27, 27, new Color (255, 255, 255),6); // Hvid
 		fields[27] = new OurStreet(new int[] {450, 2200, 6600, 16000, 19500, 23000}, 5200, 3000, "Kgs. Nytorv", 28, 28, new Color (255, 255, 255),6);
-		fields[28] = new OurBrewery(3000, "Coca-Cola Tapperi", 29, 29);
+		fields[28] = new OurBrewery(3000, "Coca-Cola", 29, 29);
 		fields[29] = new OurStreet(new int[] {500, 2400, 7200, 17000, 20500, 24000}, 5600, 3000, "Østergade", 30, 30, new Color (255, 255, 255),6); 
 		fields[30] = new OurJail("De Fængsles", 31, false);
 		fields[31] = new OurStreet(new int[] {550, 2600, 7800, 18000, 22000, 25000}, 6000, 4000, "Amagertorv", 32, 32, new Color (246, 255, 0),7);
