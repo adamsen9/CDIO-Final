@@ -10,9 +10,10 @@ import controllers.OurJailController;
 
 
 	public class OurChanceController extends FieldController{
-		OurChanceCard[] liste = new OurChanceCard[22];
+		OurChanceCard[] liste = new OurChanceCard[30];
 		private Random rnd = new Random();
 		int FaceValue;
+		int moveShipping;
 		OurJailController JailTime = new OurJailController();
 		
 	public OurChanceController() {
@@ -38,11 +39,18 @@ import controllers.OurJailController;
 		liste[19] = new OurChanceCard("Du skal have fjernet et voldsomt modermærke, betal 1.000.", "betal", 1000);
 		liste[20] = new OurChanceCard("Der er kommet en ny Iphone, du bare må have, betal 2.000.", "betal", 2000);
 		liste[21] = new OurChanceCard("Din søde tand driver dig til vanvid, slik og søde sager er den eneste udvej, betal 300.", "betal", 300);
-		
+		liste[22] = new OurChanceCard("Ryk frem til nærmeste rederi","nærmeste rederi", 0);
+		liste[23] = new OurChanceCard("Ryk frem til Start.","Start", 0);
+		liste[24] = new OurChanceCard("Ryk frem til Start.","Start", 0);
+		liste[25] = new OurChanceCard("Ryk 2 felter tilbage.", "ryk", -2);
+		liste[26] = new OurChanceCard("Ryk 2 felter frem.","ryk", 2);
+		liste[27] = new OurChanceCard("Du har stjålet en cykel og skal i fængsel.", "fængsel", 0);
+		liste[28] = new OurChanceCard("Ryk frem til nærmeste rederi","nærmeste rederi", 0);
+		liste[29] = new OurChanceCard("Ryk frem til nærmeste rederi","nærmeste rederi", 0);
 	}
 	
 	public void putCardOnStack(GUIManager display){
-		FaceValue = (int) rnd.nextInt(22);
+		FaceValue = (int) rnd.nextInt(30);
 		display.setcard(liste[FaceValue].getText());
 		
 	}
@@ -125,10 +133,33 @@ import controllers.OurJailController;
 		case ("Kongens Nytorv"):
 			display.sendMessage(liste[FaceValue].getText());
 			player.setField(28, player.getField());
-			display.movePlayer(field.getFieldId(),28, player.getName());			
+			display.movePlayer(field.getFieldId(),28, player.getName());
 			returnValue[1] = true;
 			break;
-
+			
+		case ("nærmeste rederi"):
+			display.sendMessage(liste[FaceValue].getText());
+			moveShipping = player.getField();
+			if (moveShipping>6 && moveShipping<16){
+				player.setField(16);
+				display.movePlayer(field.getFieldId(),16, player.getName());
+				}
+			else if (moveShipping>16 && moveShipping<26){
+				player.setField(26);
+				display.movePlayer(field.getFieldId(),26, player.getName());
+				}
+			else if (moveShipping>26 && moveShipping<36){
+				player.setField(36);
+				display.movePlayer(field.getFieldId(),36, player.getName());
+				}
+			else {
+				player.setField(6);
+				display.movePlayer(field.getFieldId(),6, player.getName());
+				}
+		
+			returnValue[1] = true;
+			break;
+// Spillerens bil flyttes frem til nærmeste rederi, hvorpå landonfield aktiveres...
 		}
 		putCardOnStack(display);
 		return returnValue;
