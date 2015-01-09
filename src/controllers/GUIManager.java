@@ -132,7 +132,7 @@ public class GUIManager {
 		if(state == "test"){
 			return "";
 		}
-		String[] options = {"Kast", "Køb hus/hotel", "Sælg hus"};
+		String[] options = {"Kast", "Køb hus/hotel", "Sælg hus", "Pantsæt"};
 		return GUI.getUserButtonPressed("Det er " + name + "'s tur. Tryk på knappen for at kaste terningerne.", options);
 	}
 	
