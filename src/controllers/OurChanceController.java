@@ -101,7 +101,7 @@ import controllers.OurJailController;
 			returnValue[1] = true;
 			break;
 			
-		case ("Gammelkongevej"):
+		case ("Gl. Kongevej"):
 			display.sendMessage(liste[FaceValue].getText());
 			player.setField(15, player.getField());
 			display.movePlayer(field.getFieldId(),15, player.getName());
