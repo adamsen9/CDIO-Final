@@ -28,7 +28,7 @@ import controllers.OurJailController;
 		liste[9] = new OurChanceCard("Du er enelig arving til din griske, gamle, gnier af en tante, modtag 2000", "modtag", 2000);
 		liste[10] = new OurChanceCard("Ryk frem til Strandvejen","Strandvejen", 0);
 		liste[11] = new OurChanceCard("Ryk frem til Rådhuspladsen","Rådhuspladsen", 0);
-		liste[12] = new OurChanceCard("Ryk frem til Østerbro","Østerbro", 0);
+		liste[12] = new OurChanceCard("Ryk frem til Østerbro","Østerbrogade", 0);
 		liste[13] = new OurChanceCard("Ryk frem til Start","Start", 0);
 		liste[14] = new OurChanceCard("Ryk frem til Gl. Kongevej","Gl.Kongevej", 0);
 		liste[15] = new OurChanceCard("Ryk frem til Vimmelskaftet","Vimmelskaftet", 0);
