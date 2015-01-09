@@ -36,8 +36,8 @@ public class GUIManager {
 				OurStreet territory = (OurStreet) field;
 				fields[i] = new Street.Builder()
 					.setTitle(territory.getName())
-					.setDescription("Rent: " + territory.getRent())
-					.setSubText("Price: " + territory.getPrice())
+					.setDescription("Leje: " + territory.getRent())
+					.setSubText("Pris: " + territory.getPrice())
 					.setBgColor(territory.getColor())
 					.build();
 				break;
@@ -45,31 +45,31 @@ public class GUIManager {
 				OurParking refuge = (OurParking) field;
 				fields[i] = new Refuge.Builder()
 					.setTitle(refuge.getName())
-					.setDescription("Receive: " + refuge.getBonus())
-					.setSubText("Recieve: " + refuge.getBonus())
+					.setDescription("Modtag: " + refuge.getBonus())
+					.setSubText("Modtag: " + refuge.getBonus())
 					.build();
 				break;
 			case "Brewery":
 				OurBrewery brewery = (OurBrewery) field;
 				fields[i] = new Brewery.Builder()
 					.setTitle(brewery.getName())
-					.setDescription("Rent: 100 * rolled value")
-					.setSubText("Price: " + brewery.getPrice())
+					.setDescription("Leje: 100 * rolled value")
+					.setSubText("Pris: " + brewery.getPrice())
 					.build();
 				break;
 			case "Tax":
 				OurTax tax = (OurTax) field;
 				if(tax.getTaxRate() == 0){
 					fields[i] = new Tax.Builder()
-					.setTitle(tax.getName())
-					.setDescription("Pay: " + tax.getTaxAmount())
-					.setSubText("Pay: " + tax.getTaxAmount())
+					.setTitle("Betal: "+tax.getTaxAmount())
+					.setDescription(tax.getName())
+					.setSubText("Betal: " + tax.getTaxAmount())
 					.build();
 				}else {
 					fields[i] = new Tax.Builder()
-					.setTitle(tax.getName())
-					.setDescription("Pay: " + tax.getTaxAmount() + " or Pay: " + tax.getTaxPercentage() + "% of your total Assets")
-					.setSubText("Pay: " + tax.getTaxAmount() + " or Pay: " + tax.getTaxPercentage() + "% of your total Assets")
+					.setTitle("4.000/10%")
+					.setDescription(tax.getName())
+					.setSubText("Betal: "+tax.getTaxAmount()+" eller "+tax.getTaxPercentage()+"% af dine totale aktiver.")
 					.build();
 				}
 				break;		
@@ -77,8 +77,8 @@ public class GUIManager {
 				OurShipping shipping = (OurShipping) field;
 				fields[i] = new Shipping.Builder()
 					.setTitle(shipping.getName())
-					.setSubText("Price: " + shipping.getPrice())
-					.setDescription("Rent 1: 500 | Rent 2: 1000 | Rent 3: 2000 | Rent 4: 4000")
+					.setSubText("Pris: " + shipping.getPrice())
+					.setDescription("Leje 1: 500 | Leje 2: 1000 | Leje 3: 2000 | Leje 4: 4000")
 					.build();
 				break;
 			case "Jail":
@@ -89,7 +89,9 @@ public class GUIManager {
 					.build();
 				break;
 			case "Start":
-				fields[i] = new Start.Builder().build();
+				fields[i] = new Start.Builder()
+					.setSubText("Modtag 4.000")
+					.build();
 				break;
 			case "Chance":
 				fields[i] = new Chance.Builder()

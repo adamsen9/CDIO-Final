@@ -13,7 +13,7 @@ public class GameBoard {
 		fields[1] = new OurStreet(new int[] {50, 250, 750, 2250, 4000, 6000}, 1200, 1000, "Rødovrevej", 2, 2, new Color (38, 131, 212), 1); // Lyseblå
 		fields[2] = new OurChance(3);
 		fields[3] = new OurStreet(new int[] {50, 250, 750, 2250, 4000, 6000}, 1200, 1000, "Hvidovrevej", 4, 4, new Color (38, 131, 212), 1);
-		fields[4] = new OurTax(4000, 10, "Betal 10% eller 4.000", 5, 5);
+		fields[4] = new OurTax(4000, 10, "Indkomstskat", 5, 5);
 		fields[5] = new OurShipping(4000, "SFL", 6, 6);
 		fields[6] = new OurStreet(new int[] {100, 600, 1800, 5400, 8000, 11000}, 2000, 1000, "Roskildevej", 7, 7, new Color (240, 106, 79), 2); // Laksefarve
 		fields[7] = new OurChance(8);
@@ -47,7 +47,7 @@ public class GameBoard {
 		fields[35] = new OurShipping(4000, "Halsskov/Knudshoved", 36, 36);
 		fields[36] = new OurChance(37);
 		fields[37] = new OurStreet(new int[] {700, 3500, 10000, 22000, 26000, 30000}, 7000, 4000, "Frederiksberggade", 38, 38, new Color (111, 77, 117),8); // Lilla
-		fields[38] = new OurTax(2000, 0, "Statsskat, betal 2000", 39, 39);
+		fields[38] = new OurTax(2000, 0, "Statsskat", 39, 39);
 		fields[39] = new OurStreet(new int[] {1000, 4000, 12000, 28000, 34000, 40000}, 8000, 4000, "Rådhuspladsen", 40, 40, new Color (111, 77, 117),8);
 	}
 	
