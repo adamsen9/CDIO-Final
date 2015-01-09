@@ -37,7 +37,7 @@ import controllers.OurJailController;
 	
 	public void putCardOnStack(GUIManager display){
 		FaceValue = (int) rnd.nextInt(17);
-		display.setcard(liste[FaceValue].getText() + ". " +  liste[FaceValue].getEffect() +  " " + liste[FaceValue].getAmount());
+		display.setcard(liste[FaceValue].getText());
 		
 	}
 	
