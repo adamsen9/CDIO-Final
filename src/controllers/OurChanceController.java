@@ -108,7 +108,7 @@ import controllers.OurJailController;
 			returnValue[1] = true;
 			break;
 			
-		case ("Vimmmelskaftet"):
+		case ("Vimmelskaftet"):
 			display.sendMessage(liste[FaceValue].getText());
 			player.setField(33, player.getField());
 			display.movePlayer(field.getFieldId(),33, player.getName());
