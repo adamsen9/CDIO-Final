@@ -151,7 +151,20 @@ public class GameController {
 						}
 					}
 				}else if(result == "Sælg hus"){
+					ArrayList<OurStreet> streetsWithHouses = board.getAllWithHouses();
+					ArrayList<String> names = new ArrayList<String>();
+					for(int i = 0; i < streetsWithHouses.size(); i++){
+						names.add(streetsWithHouses.get(i).getName());
+					}
+					if(names.size() == 0) continue; // skips to next iteration if there is no hosues to remove.
+					String selectedName = display.chooseToRemoveHouse(names);
+					OurStreet selectedStreet = (OurStreet) board.getFieldWhereName(selectedName);
+					selectedStreet.removeHouse();
+					activePlayer.deposit(selectedStreet.getHousePrice()/2);
+					display.updateHouses(selectedStreet.getFieldId(), selectedStreet.getNumberOfHouses());
+					display.updateBalance(activePlayer.getName(), activePlayer.getBalance());
 					
+					//TODO: check for building even has to be implemented.
 				}else{
 					break;
 				}
