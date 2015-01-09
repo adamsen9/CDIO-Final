@@ -13,7 +13,7 @@ import controllers.OurJailController;
 		OurChanceCard[] liste = new OurChanceCard[17];
 		private Random rnd = new Random();
 		int FaceValue;
-		OurJailController JailTime;
+		OurJailController JailTime = new OurJailController();
 		
 	public OurChanceController() {
 		liste[0] = new OurChanceCard("Ryk 2 felter tilbage", "ryk", -2);

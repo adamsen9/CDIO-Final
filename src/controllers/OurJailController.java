@@ -13,8 +13,8 @@ public class OurJailController extends FieldController{
 		
 		//tjek om det virker ved blackbox test senere
 		display.sendMessage(player.getName() + " er taget til fange og sendt i fængsel");
+		display.movePlayer(player.getField(), 11, player.getName());
 		player.setField(11);
-		display.movePlayer(31, 11, player.getName());
 		player.setTimeInJail(0);
 		player.setImPrisoned(true);
 		
