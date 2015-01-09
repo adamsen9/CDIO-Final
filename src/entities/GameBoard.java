@@ -170,12 +170,12 @@ public class GameBoard {
 		for(int i = 0; i < fields.length; i++){
 			if(fields[i].getType() == "Street"){
 				OurStreet street = (OurStreet) fields[i];
-				if(street.getOwner().getId() == id && street.getNumberOfHouses() == 0){
+				if(street.isOwned() && street.getOwner().getId() == id && street.getNumberOfHouses() == 0){
 					ownedWithoutHouses.add(street);
 				}	
 			}
 		}
-		return null;
+		return ownedWithoutHouses;
 	}
 
 
@@ -184,7 +184,7 @@ public class GameBoard {
 		for(int i = 0; i < fields.length; i++){
 			if(fields[i].getType() == "Street"){
 				OurStreet street = (OurStreet) fields[i];
-				if(street.getOwner().getId() == id && street.getPawnedStatus()){
+				if(street.isOwned() && street.getOwner().getId() == id && street.getPawnedStatus()){
 					pawnedStreets.add(street);
 				}
 			}

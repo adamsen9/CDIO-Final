@@ -6,7 +6,7 @@ public class OurStreet extends Ownable{
 	private int[] rent = new int[6];
 	private int housePrice;
 	private Color color;
-	private int numberOfHouses;
+	private int numberOfHouses = 0;
 	private int category;
 	
 	public OurStreet(int[] rent, int price, int housePrice, String name, int id, int fieldPossition, Color color, int category){

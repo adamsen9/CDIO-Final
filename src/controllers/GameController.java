@@ -168,6 +168,7 @@ public class GameController {
 					//TODO: check for building even has to be implemented.
 				}else if(result == "Pantsæt grund"){
 					ArrayList<OurStreet> streets = board.getOwnedStreetsWithoutHouses(activePlayer.getId());
+					if(streets == null || streets.size() == 0) continue;
 					String[] names = new String[streets.size()];
 					for(int i = 0; i < streets.size(); i++){
 						names[i] = streets.get(i).getName();
@@ -178,6 +179,8 @@ public class GameController {
 					activePlayer.deposit(selectedStreet.getPrice()/2);
 				}else if(result == "Fjern pantsætning"){
 					ArrayList<OurStreet> streets = board.getPawnedStreets(activePlayer.getId());
+					System.out.println(streets.size());
+					if(streets == null || streets.size() == 0) continue;
 					String[] names = new String[streets.size()];
 					for(int i = 0; i < streets.size(); i++){
 						names[i] = streets.get(i).getName();
