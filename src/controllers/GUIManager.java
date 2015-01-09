@@ -130,7 +130,8 @@ public class GUIManager {
 		if(state == "test"){
 			return "";
 		}
-		return GUI.getUserButtonPressed("Det er " + name + "'s tur. Tryk på knappen for at kaste terningerne.", "Kast", "Køb hus/hotel");
+		String[] options = {"Kast", "Køb hus/hotel", "Sælg hus"};
+		return GUI.getUserButtonPressed("Det er " + name + "'s tur. Tryk på knappen for at kaste terningerne.", options);
 	}
 	
 	public void rollJail(){
@@ -219,9 +220,44 @@ public class GUIManager {
 		return GUI.getUserButtonPressed("Vil du betale 1000 dkk eller rulle en gang med terningerne", "Betal","Rul");
 	}
 	
+	public int enterBid(int bid, int auctioneerBalance) {
+		String input = "";
+		Boolean cinput = true;
+		int newBid = 0;
+		while(true) {
+			do {
+				input = GUI.getUserString("Indtast venligst et bud højere end " + bid);
+				try {
+					newBid = Integer.parseInt(input);
+					if(newBid <= bid) {
+						GUI.getUserButtonPressed("Du skal som minimum give et højere bud end det tidligere bud, der er på " + bid, "Prøv igen");
+					} else
+					if(auctioneerBalance < newBid) {
+						GUI.getUserButtonPressed("Du kan ikke byde mere end du har. Du har " + auctioneerBalance, "Prøv igen");
+					}
+					if(auctioneerBalance > newBid && newBid > bid) {
+						cinput = false;
+					}
+				} catch (NumberFormatException e) {
+				}
+				
+			} while (cinput);
+			break;
+		}
+		return newBid;
+	}
+	public String chooseToBid(String name, int bid) {
+		return GUI.getUserButtonPressed("Det er " + name + "'s tur til at byde. Vil du byde på grunden? Buddet er på " + bid + " kroner.","Ja","Nej");
+	}
+	
 	public String chooseToPlaceHouse(ArrayList<String> owned){
 		String[] buildAble = owned.toArray(new String[owned.size()]);
 		return GUI.getUserSelection("Vælg hvilken grund du gerne vil bygge et hus på.", buildAble);
+	}
+	
+	public String chooseToRemoveHouse(ArrayList<String> houses){
+		String[] streetNames = houses.toArray(new String[houses.size()]);
+		return GUI.getUserSelection("Vælg hvilken grund du gerne vil sælge et hus fra", streetNames);
 	}
 	
 	public void updateHouses(int fieldNumber, int numberOfHouses){
@@ -231,6 +267,7 @@ public class GUIManager {
 			GUI.setHouses(fieldNumber, numberOfHouses);
 		}
 	}
+	
 	public void setcard(String text){
 		GUI.setNextChanceCardText(text);
 	}

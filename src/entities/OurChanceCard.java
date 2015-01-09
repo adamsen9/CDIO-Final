@@ -7,9 +7,9 @@ public class OurChanceCard {
 	private int amount;
 	
 	public OurChanceCard(String text, String effect, int amount){
-		this.setText(text);
-		this.setEffect(effect);
-		this.setAmount(amount);
+		this.text = text;
+		this.effect = effect;
+		this.amount = amount;
 		
 	}
 	

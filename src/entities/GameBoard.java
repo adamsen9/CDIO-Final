@@ -142,6 +142,19 @@ public class GameBoard {
 		return buildableFields;
 	}
 	
+	public ArrayList<OurStreet> getAllWithHouses(int id){
+		ArrayList<OurStreet> streetsWithHouses = new ArrayList<OurStreet>();
+		for(int i = 0; i < fields.length; i++){
+			if(fields[i].getType() == "Street"){
+				OurStreet street = (OurStreet) fields[i];
+				if(street.getNumberOfHouses() > 0 && street.getOwner().getId() == id){
+					streetsWithHouses.add(street);
+				}
+			}
+		}
+		return streetsWithHouses;
+	}
+	
 	public OurField getFieldWhereName(String name){
 		for(int i = 0; i < fields.length; i++){
 			if(fields[i].getName() == name){

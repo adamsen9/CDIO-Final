@@ -89,6 +89,7 @@ public class GameController {
 		//Kør spillet
 		display = new GUIManager();
 		display.create(board);
+		chanceController.putCardOnStack(display);
 		
 		
 		//Vælg antal spillere
@@ -105,6 +106,12 @@ public class GameController {
 		
 		players[1] = new Player(1, "Mogens");
 		display.addPlayer("Mogens", 30000, colors[1]);
+		
+		players[2] = new Player(2, "Karsten");
+		display.addPlayer("Karsten", 30000, colors[2]);
+		
+		players[3] = new Player(3, "Finn");
+		display.addPlayer("Finn", 30000, colors[3]);
 		
 		//loop er får vores spil til at køre.
 		while(true){
@@ -136,8 +143,6 @@ public class GameController {
 							owned.add(allBuildable.get(j).getName());
 						}
 					}
-					
-					System.out.println("owned size "+owned.size());
 					if(owned.size() > 0){
 						String nameOfPlacement = display.chooseToPlaceHouse(owned);
 						OurStreet placement = (OurStreet) board.getFieldWhereName(nameOfPlacement);
@@ -150,8 +155,24 @@ public class GameController {
 							display.updateHouses(placement.getFieldId(), placement.getNumberOfHouses());
 							display.updateBalance(activePlayer.getName(), activePlayer.getBalance());
 						}
-						
 					}
+				}else if(result == "Sælg hus"){
+					ArrayList<OurStreet> streetsWithHouses = board.getAllWithHouses(activePlayer.getId());
+					System.out.println(streetsWithHouses.size());
+					ArrayList<String> names = new ArrayList<String>();
+					for(int i = 0; i < streetsWithHouses.size(); i++){
+						System.out.println("inside the for loop: " + i);
+						names.add(streetsWithHouses.get(i).getName());
+					}
+					if(names.size() == 0) continue; // skips to next iteration if there is no hosues to remove.
+					String selectedName = display.chooseToRemoveHouse(names);
+					OurStreet selectedStreet = (OurStreet) board.getFieldWhereName(selectedName);
+					selectedStreet.removeHouse();
+					activePlayer.deposit(selectedStreet.getHousePrice()/2);
+					display.updateHouses(selectedStreet.getFieldId(), selectedStreet.getNumberOfHouses());
+					display.updateBalance(activePlayer.getName(), activePlayer.getBalance());
+					
+					//TODO: check for building even has to be implemented.
 				}else{
 					break;
 				}
@@ -202,10 +223,10 @@ public class GameController {
 			display.movePlayer(activePlayer.getPrevField(), activePlayer.getField(), activePlayer.getName());
                         
 			//Logik til at kontrollere hvilket felt der er landet på.
-			currentField = board.getField(activePlayer.getField() - 1);
 			boolean[] landOnField = {true, false};
 			do{
-				 landOnField = fieldController[activePlayer.getField() - 1].landOnField(activePlayer, display, currentField, dice);
+				currentField = board.getField(activePlayer.getField() - 1);
+				landOnField = fieldController[activePlayer.getField() - 1].landOnField(activePlayer, display, currentField, dice);
 			} while (landOnField[1]);
 			if(!landOnField[0]){
 				bankruptcy(turn);
