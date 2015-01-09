@@ -86,6 +86,12 @@ import controllers.OurJailController;
 			returnValue[1] = true;
 			break;
 			
+		case ("Østerbrogade"):
+			display.sendMessage(liste[FaceValue].getText());
+			player.setField(40, player.getField());
+			returnValue[1] = true;
+			break;
+			
 		case ("Start"):
 			display.sendMessage(liste[FaceValue].getText());
 			player.setField(1, player.getField());
