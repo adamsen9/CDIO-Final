@@ -151,7 +151,7 @@ public class GameController {
 						}
 					}
 				}else if(result == "Sælg hus"){
-					ArrayList<OurStreet> streetsWithHouses = board.getAllWithHouses();
+					ArrayList<OurStreet> streetsWithHouses = board.getAllWithHouses(activePlayer.getId());
 					ArrayList<String> names = new ArrayList<String>();
 					for(int i = 0; i < streetsWithHouses.size(); i++){
 						names.add(streetsWithHouses.get(i).getName());
