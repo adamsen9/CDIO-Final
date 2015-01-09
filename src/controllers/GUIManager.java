@@ -130,7 +130,8 @@ public class GUIManager {
 		if(state == "test"){
 			return "";
 		}
-		return GUI.getUserButtonPressed("Det er " + name + "'s tur. Tryk på knappen for at kaste terningerne.", "Kast", "Køb hus/hotel");
+		String[] options = {"Kast", "Køb hus/hotel", "Sælg hus"};
+		return GUI.getUserButtonPressed("Det er " + name + "'s tur. Tryk på knappen for at kaste terningerne.", options);
 	}
 	
 	public void rollJail(){

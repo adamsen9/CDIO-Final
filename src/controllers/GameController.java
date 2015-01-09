@@ -149,7 +149,6 @@ public class GameController {
 							display.updateHouses(placement.getFieldId(), placement.getNumberOfHouses());
 							display.updateBalance(activePlayer.getName(), activePlayer.getBalance());
 						}
-						
 					}
 				}else if(result == "Sælg hus"){
 					
