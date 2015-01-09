@@ -132,7 +132,7 @@ public class GUIManager {
 		if(state == "test"){
 			return "";
 		}
-		String[] options = {"Kast", "Køb hus/hotel", "Sælg hus", "Pantsæt grund"};
+		String[] options = {"Kast", "Køb hus/hotel", "Sælg hus", "Pantsæt grund", "Fjern pantsætning"};
 		return GUI.getUserButtonPressed("Det er " + name + "'s tur. Tryk på knappen for at kaste terningerne.", options);
 	}
 	
@@ -275,6 +275,10 @@ public class GUIManager {
 	
 	public void setcard(String text){
 		GUI.setNextChanceCardText(text);
+	}
+
+	public String chooseToRemovePawn(String[] names) {
+		return GUI.getUserSelection("Vælg hvilken grund du gerne vil fjerne pantsætningen fra", names);
 	}
 }
 

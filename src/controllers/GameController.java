@@ -176,6 +176,22 @@ public class GameController {
 					OurStreet selectedStreet = (OurStreet) board.getFieldWhereName(selectedName);
 					selectedStreet.isPawned();
 					activePlayer.deposit(selectedStreet.getPrice()/2);
+				}else if(result == "Fjern pantsætning"){
+					ArrayList<OurStreet> streets = board.getPawnedStreets(activePlayer.getId());
+					String[] names = new String[streets.size()];
+					for(int i = 0; i < streets.size(); i++){
+						names[i] = streets.get(i).getName();
+					}
+					String selectedName = display.chooseToRemovePawn(names);
+					OurStreet selectedStreet = (OurStreet) board.getFieldWhereName(selectedName);
+					Double calculatedPrice = (selectedStreet.getPrice()*0.5)*1.1;
+					int price = calculatedPrice.intValue();
+					if(activePlayer.withdraw(price)){
+						selectedStreet.isNotPawned();
+					} else{
+						display.sendMessage("Du har ikke nok penge til dette");
+						continue;
+					}
 				}else{
 					break;
 				}

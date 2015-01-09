@@ -177,4 +177,18 @@ public class GameBoard {
 		}
 		return null;
 	}
+
+
+	public ArrayList<OurStreet> getPawnedStreets(int id) {
+		ArrayList<OurStreet> pawnedStreets = new ArrayList<OurStreet>();
+		for(int i = 0; i < fields.length; i++){
+			if(fields[i].getType() == "Street"){
+				OurStreet street = (OurStreet) fields[i];
+				if(street.getOwner().getId() == id && street.getPawnedStatus()){
+					pawnedStreets.add(street);
+				}
+			}
+		}
+		return pawnedStreets;
+	}
 }
