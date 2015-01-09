@@ -134,7 +134,7 @@ public class GameController {
 					ArrayList<OurStreet> allBuildable = board.getBuildableFields(activePlayer.getId());
 					System.out.println(allBuildable.size());
 					for(int j = 0; j < allBuildable.size(); j++){
-						if(allBuildable.get(j).getNumberOfHouses() <= 5){
+						if(allBuildable.get(j).getNumberOfHouses() < 5){
 							owned.add(allBuildable.get(j).getName());
 						}
 					}
