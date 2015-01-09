@@ -73,4 +73,8 @@ public class OurStreet extends Ownable{
 	public int getNumberOfHouses() {
 		return numberOfHouses;
 	}
+	
+	public void removeHouse(){
+		numberOfHouses--;
+	}
 }
