@@ -225,6 +225,11 @@ public class GUIManager {
 		return GUI.getUserSelection("Vælg hvilken grund du gerne vil bygge et hus på.", buildAble);
 	}
 	
+	public String chooseToRemoveHouse(ArrayList<String> houses){
+		String[] streetNames = houses.toArray(new String[houses.size()]);
+		return GUI.getUserSelection("Vælg hvilken grund du gerne vil sælge et hus fra", streetNames);
+	}
+	
 	public void updateHouses(int fieldNumber, int numberOfHouses){
 		if(numberOfHouses == 5){
 			GUI.setHotel(fieldNumber, true);
@@ -232,6 +237,7 @@ public class GUIManager {
 			GUI.setHouses(fieldNumber, numberOfHouses);
 		}
 	}
+	
 	public void setcard(String text){
 		GUI.setNextChanceCardText(text);
 	}
