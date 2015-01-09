@@ -8,8 +8,8 @@ public class Player{
 	final private int STARTMONEY = 30000;
 	private String payMethod = "10%"; // Kan være "10%" eller "4000"
 	private Account acc;
-	private int numberOfFleetsOwned = 0;
-	private int numberOfLaborCampsOwned = 0;
+	private int numberOfShippingOwned = 0;
+	private int numberOfBreweryOwned = 0;
 	private boolean hasLost = false;
 	private int[] inventory = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 	private int[] ownedInCategory = {0,0,0,0,0,0,0,0};
@@ -86,28 +86,28 @@ public class Player{
 		return this.payMethod;
 	}
 
-	public int getNumberOfFleetsOwned() {
-		return numberOfFleetsOwned;
+	public int getNumberOfShippingOwned() {
+		return numberOfShippingOwned;
 	}
 
-	public void setNumberOfFleetsOwned(int numberOfFleetsOwned) {
-		this.numberOfFleetsOwned = numberOfFleetsOwned;
+	public void setNumberOfShippingOwned(int numberOfFleetsOwned) {
+		this.numberOfShippingOwned = numberOfFleetsOwned;
 	}
 	
-	public void addNumberOfFleetsOwned(){
-		this.numberOfFleetsOwned++;
+	public void addNumberOfShippingOwned(){
+		this.numberOfShippingOwned++;
 	}
 	
-	public int getNumberOfLaborCampsOwned(){
-		return numberOfLaborCampsOwned;
+	public int getNumberOfBreweryOwned(){
+		return numberOfBreweryOwned;
 	}
 	
-	public void addNumberOfLaborCamps(){
-		this.numberOfLaborCampsOwned++;
+	public void addNumberOfBrewery(){
+		this.numberOfBreweryOwned++;
 	}
 	
-	public void setNumberOfLaborCamps(int numberOfLabourCampsOwned){
-		this.numberOfLaborCampsOwned = numberOfLabourCampsOwned;
+	public void setNumberOfBrewery(int numberOfLabourCampsOwned){
+		this.numberOfBreweryOwned = numberOfLabourCampsOwned;
 	}
 	
 	//Denne metode skal kaldes idet GameController vurderer at en spiller er gået bankerot

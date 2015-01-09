@@ -20,7 +20,7 @@ public class OurShipping extends Ownable{
 	@Override
 	public int getRent() {
 		if (super.getOwner() != null){
-			return this.rent[super.getOwner().getNumberOfFleetsOwned()-1];
+			return this.rent[super.getOwner().getNumberOfShippingOwned()-1];
 		}
 			return 0; // returner 0 hvis grunden ikke ejes af nogle.
 	}
