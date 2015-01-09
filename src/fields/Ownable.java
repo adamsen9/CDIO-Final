@@ -48,10 +48,10 @@ abstract public class Ownable extends OurField{
 		this.fieldPossition = fieldPossition;
 	}
 	
-	public void setPawned(){
+	public void isPawned(){
 		pawned = true;
 	}
-	public void setNotPawned(){
+	public void isNotPawned(){
 		pawned = false;
 	}
 	public boolean getPawnedStatus(){

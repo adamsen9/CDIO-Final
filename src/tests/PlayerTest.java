@@ -14,8 +14,8 @@ public class PlayerTest {
 		assertEquals("THOMAS", player.getName());
 		assertEquals(101, player.getId());
 		assertEquals(30000, player.getBalance());
-		assertEquals(0, player.getNumberOfFleetsOwned());
-		assertEquals(0, player.getNumberOfLaborCampsOwned());
+		assertEquals(0, player.getNumberOfShippingOwned());
+		assertEquals(0, player.getNumberOfBreweryOwned());
 		assertEquals(0, player.getNumberOfFieldsOwned());
 	}
 	
@@ -23,11 +23,11 @@ public class PlayerTest {
 	//Vi tester add og set metoderne, for felterne.
 	public void testAddSet()  {
 		Player player = new Player(101, "THOMAS");
-		player.addNumberOfFleetsOwned();
-		player.addNumberOfLaborCamps();
+		player.addNumberOfShippingOwned();
+		player.addNumberOfBrewery();
 		player.addToInventory(10,1000);
-		assertEquals(1, player.getNumberOfFleetsOwned());
-		assertEquals(1,player.getNumberOfLaborCampsOwned());
+		assertEquals(1, player.getNumberOfShippingOwned());
+		assertEquals(1,player.getNumberOfBreweryOwned());
 		assertEquals(1, player.getNumberOfFieldsOwned());
 		assertEquals(10, player.getInventory()[0]);
 	}

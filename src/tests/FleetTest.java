@@ -49,13 +49,13 @@ public class FleetTest {
 		assertEquals(true, fleetController.landOnField(player1, display, fleet1, die));
 		assertEquals(26000, player1.getBalance());
 		assertEquals(1, player1.getInventory()[0]);
-		assertEquals(1, player1.getNumberOfFleetsOwned());
+		assertEquals(1, player1.getNumberOfShippingOwned());
 		assertEquals(1, player1.getNumberOfFieldsOwned());
 		assertEquals(player1, fleet1.getOwner());
 		assertEquals(true, fleetController.landOnField(player1, display, fleet2, die));
 		assertEquals(22000, player1.getBalance());
 		assertEquals(2, player1.getInventory()[1]);
-		assertEquals(2, player1.getNumberOfFleetsOwned());
+		assertEquals(2, player1.getNumberOfShippingOwned());
 		assertEquals(2, player1.getNumberOfFieldsOwned());
 		assertEquals(player1, fleet2.getOwner());
 	}
@@ -67,7 +67,7 @@ public class FleetTest {
 		assertEquals(true, fleetController.landOnField(player1, display, fleet1, die));
 		assertEquals(1000, player1.getBalance());
 		assertEquals(null, fleet1.getOwner());
-		assertEquals(0, player1.getNumberOfFleetsOwned());
+		assertEquals(0, player1.getNumberOfShippingOwned());
 		assertEquals(0, player1.getNumberOfFieldsOwned());
 		assertEquals(0, player1.getInventory()[0]);
 	}
