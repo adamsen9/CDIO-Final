@@ -30,7 +30,7 @@ import controllers.OurJailController;
 		liste[11] = new OurChanceCard("Ryk frem til Rådhuspladsen","Rådhuspladsen", 0);
 		liste[12] = new OurChanceCard("Ryk frem til Østerbro","Østerbrogade", 0);
 		liste[13] = new OurChanceCard("Ryk frem til Start","Start", 0);
-		liste[14] = new OurChanceCard("Ryk frem til Gl. Kongevej","Gl.Kongevej", 0);
+		liste[14] = new OurChanceCard("Ryk frem til Gl. Kongevej","Gl. Kongevej", 0);
 		liste[15] = new OurChanceCard("Ryk frem til Vimmelskaftet","Vimmelskaftet", 0);
 		liste[16] = new OurChanceCard("Ryk frem til Kongens Nytorv","Kongens Nytorv", 0);
 	}
