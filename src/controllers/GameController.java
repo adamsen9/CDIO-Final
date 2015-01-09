@@ -137,8 +137,6 @@ public class GameController {
 							owned.add(allBuildable.get(j).getName());
 						}
 					}
-					
-					System.out.println("owned size "+owned.size());
 					if(owned.size() > 0){
 						String nameOfPlacement = display.chooseToPlaceHouse(owned);
 						OurStreet placement = (OurStreet) board.getFieldWhereName(nameOfPlacement);
@@ -153,6 +151,8 @@ public class GameController {
 						}
 						
 					}
+				}else if(result == "Sælg hus"){
+					
 				}else{
 					break;
 				}
