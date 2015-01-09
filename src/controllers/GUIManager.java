@@ -132,7 +132,7 @@ public class GUIManager {
 		if(state == "test"){
 			return "";
 		}
-		String[] options = {"Kast", "Køb hus/hotel", "Sælg hus", "Pantsæt"};
+		String[] options = {"Kast", "Køb hus/hotel", "Sælg hus", "Pantsæt grund"};
 		return GUI.getUserButtonPressed("Det er " + name + "'s tur. Tryk på knappen for at kaste terningerne.", options);
 	}
 	
@@ -257,9 +257,12 @@ public class GUIManager {
 		return GUI.getUserSelection("Vælg hvilken grund du gerne vil bygge et hus på.", buildAble);
 	}
 	
-	public String chooseToRemoveHouse(ArrayList<String> houses){
-		String[] streetNames = houses.toArray(new String[houses.size()]);
-		return GUI.getUserSelection("Vælg hvilken grund du gerne vil sælge et hus fra", streetNames);
+	public String chooseToRemoveHouse(String[] houses){
+		return GUI.getUserSelection("Vælg hvilken grund du gerne vil sælge et hus fra", houses);
+	}
+	
+	public String chooseToPawnStreet(String[] streetNames){
+		return GUI.getUserSelection("Vælg hvilken grund du gerne vil pantsætte", streetNames);
 	}
 	
 	public void updateHouses(int fieldNumber, int numberOfHouses){

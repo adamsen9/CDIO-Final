@@ -163,4 +163,18 @@ public class GameBoard {
 		}
 		return null;
 	}
+
+
+	public ArrayList<OurStreet> getOwnedStreetsWithoutHouses(int id) {
+		ArrayList<OurStreet> ownedWithoutHouses = new ArrayList<OurStreet>();
+		for(int i = 0; i < fields.length; i++){
+			if(fields[i].getType() == "Street"){
+				OurStreet street = (OurStreet) fields[i];
+				if(street.getOwner().getId() == id && street.getNumberOfHouses() == 0){
+					ownedWithoutHouses.add(street);
+				}	
+			}
+		}
+		return null;
+	}
 }
