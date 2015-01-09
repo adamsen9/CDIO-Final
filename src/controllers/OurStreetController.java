@@ -3,7 +3,7 @@ import entities.*;
 import fields.*;
 
 public class OurStreetController extends OwnableController {
-	private OurStreet territory;
+	private OurStreet street;
 	
 	public OurStreetController() {
 		
@@ -11,20 +11,24 @@ public class OurStreetController extends OwnableController {
 
 	@Override
 	public boolean[] landOnField(Player player, GUIManager display, OurField field, Die die) {
-		territory = (OurStreet) field;
+		street = (OurStreet) field;
 		boolean[] returnValue = {true, false};
-		if(territory.isOwned()) {
-			if(isOwner(player, territory)) {
+		if(street.getPawnedStatus()){
+			display.sendMessage("Denne grund er pantsat");
+			return returnValue;
+		}
+		if(street.isOwned()) {
+			if(isOwner(player, street)) {
 				display.sendMessage("Du er ejer af denne grund");
 			} else {
-				display.sendMessage(player.getName() + " er landet på " + territory.getName() + ". Grunden er ejet, du skal betale " + territory.getRent() + " i leje.");
-				returnValue[0] =  payRent(player, territory);
+				display.sendMessage(player.getName() + " er landet på " + street.getName() + ". Grunden er ejet, du skal betale " + street.getRent() + " i leje.");
+				returnValue[0] =  payRent(player, street);
 				return returnValue;
 			}
 			
 		} else {
-			if(display.chooseToBuyTerritory(territory.getName(), territory.getPrice(), player.getName(), territory.getRent()) == "Køb"){
-				buyField(player, display, territory);
+			if(display.chooseToBuyTerritory(street.getName(), street.getPrice(), player.getName(), street.getRent()) == "Køb"){
+				buyField(player, display, street);
 			}
 		}
 		return returnValue;

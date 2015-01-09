@@ -153,13 +153,11 @@ public class GameController {
 					}
 				}else if(result == "Sælg hus"){
 					ArrayList<OurStreet> streetsWithHouses = board.getAllWithHouses(activePlayer.getId());
-					System.out.println(streetsWithHouses.size());
-					ArrayList<String> names = new ArrayList<String>();
+					String[] names = new String[streetsWithHouses.size()];
 					for(int i = 0; i < streetsWithHouses.size(); i++){
-						System.out.println("inside the for loop: " + i);
-						names.add(streetsWithHouses.get(i).getName());
+						names[i] = streetsWithHouses.get(i).getName();
 					}
-					if(names.size() == 0) continue; // skips to next iteration if there is no hosues to remove.
+					if(names.length == 0) continue; // skips to next iteration if there is no hosues to remove.
 					String selectedName = display.chooseToRemoveHouse(names);
 					OurStreet selectedStreet = (OurStreet) board.getFieldWhereName(selectedName);
 					selectedStreet.removeHouse();
@@ -168,6 +166,16 @@ public class GameController {
 					display.updateBalance(activePlayer.getName(), activePlayer.getBalance());
 					
 					//TODO: check for building even has to be implemented.
+				}else if(result == "Pantsæt grund"){
+					ArrayList<OurStreet> streets = board.getOwnedStreetsWithoutHouses(activePlayer.getId());
+					String[] names = new String[streets.size()];
+					for(int i = 0; i < streets.size(); i++){
+						names[i] = streets.get(i).getName();
+					}
+					String selectedName = display.chooseToPawnStreet(names);
+					OurStreet selectedStreet = (OurStreet) board.getFieldWhereName(selectedName);
+					selectedStreet.isPawned();
+					activePlayer.deposit(selectedStreet.getPrice()/2);
 				}else{
 					break;
 				}
@@ -237,7 +245,7 @@ public class GameController {
 				display.updateBalance(players[i].getName(), players[i].getBalance());
 			}
 		}	
-	}	
+	}		
 	private void bankruptcy(int turn){
 		int[] playerInventory = activePlayer.getInventory();
 		for (int i = 0; i < playerInventory.length; i++){
