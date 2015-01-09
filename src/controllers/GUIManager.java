@@ -219,6 +219,9 @@ public class GUIManager {
 	public String rollOrPay() {
 		return GUI.getUserButtonPressed("Vil du betale 1000 dkk eller rulle en gang med terningerne", "Betal","Rul");
 	}
+	public String chooseToBid(String name, int bid) {
+		return GUI.getUserButtonPressed("Det er " + name + "'s tur til at byde. Vil du byde på grunden? Buddet er på " + bid + " kroner.","Ja","Nej");
+	}
 	
 	public String chooseToPlaceHouse(ArrayList<String> owned){
 		String[] buildAble = owned.toArray(new String[owned.size()]);

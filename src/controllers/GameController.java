@@ -107,6 +107,12 @@ public class GameController {
 		players[1] = new Player(1, "Mogens");
 		display.addPlayer("Mogens", 30000, colors[1]);
 		
+		players[2] = new Player(2, "Karsten");
+		display.addPlayer("Karsten", 30000, colors[2]);
+		
+		players[3] = new Player(3, "Finn");
+		display.addPlayer("Finn", 30000, colors[3]);
+		
 		//loop er får vores spil til at køre.
 		while(true){
 			activePlayer = players[turn];
