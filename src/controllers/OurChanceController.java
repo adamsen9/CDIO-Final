@@ -33,6 +33,12 @@ import controllers.OurJailController;
 		liste[14] = new OurChanceCard("Ryk frem til Gl. Kongevej","Gl. Kongevej", 0);
 		liste[15] = new OurChanceCard("Ryk frem til Vimmelskaftet","Vimmelskaftet", 0);
 		liste[16] = new OurChanceCard("Ryk frem til Kongens Nytorv","Kongens Nytorv", 0);
+		liste[17] = new OurChanceCard("Du skal til fødselsdag, betal 500,", "betal", 500);
+		liste[18] = new OurChanceCard("Du køber en hundehvalp, betal 500,", "betal", 500);
+		liste[19] = new OurChanceCard("Du skal have fjernet et voldsomt modermærke, betal 1000,", "betal", 1000);
+		liste[20] = new OurChanceCard("Der er kommet en ny Iphone, du bare må have, betal 2000,", "betal", 2000);
+		liste[21] = new OurChanceCard("Din søde tand driver dig til vanvid, slik og søde sager er den eneste udvej, betal 300,", "betal", 300);
+		
 	}
 	
 	public void putCardOnStack(GUIManager display){
