@@ -167,21 +167,21 @@ public class GUIManager {
 		GUI.getUserButtonPressed("\n\n" + message, "Ok");
 	}
 	
-	public String chooseToBuyFleet(String name, int price, String playerName){
+	public String chooseToBuyShipping(String name, int price, String playerName){
 		if(state == "test"){
 			return handel;
 		}
 		return GUI.getUserButtonPressed("\n" + playerName + " er landet på flåden " + name + ". Den er ikke ejet.\nVil du købe " + name + "? Det koster " + price + " kroner.", "Køb", "Afslå");
 	}
 	
-	public String chooseToBuyTerritory(String name, int price, String playerName, int rent){
+	public String chooseToBuyStreet(String name, int price, String playerName, int rent){
 		if(state == "test"){
 			return handel;
 		}
 		return GUI.getUserButtonPressed("\n" + playerName  + " er landet på grunden " + name + ". Den er ikke ejet.\nVil du købe " + name + "? Det koster " + price + " kroner, lejen er på " + rent+".", "Køb", "Afslå");
 	}
 	
-	public String chooseToBuyLaborCamp(String name, int price, String playerName){
+	public String chooseToBuyBrewery(String name, int price, String playerName){
 		if(state == "test"){
 			return handel;
 		}

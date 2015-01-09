@@ -4,7 +4,7 @@ public class OurTax extends OurField{
 	private int taxAmount;
 	private int taxPercentage;
 	private double taxRate = 0.1; 
-	private int fieldPossition;
+	private int fieldPosition;
 	
 	public OurTax(int taxAmount, int taxRate, String name, int id, int fieldPossition){
 		this.taxAmount = taxAmount;
@@ -41,11 +41,11 @@ public class OurTax extends OurField{
 	}
 
 	public int getFieldPossition() {
-		return fieldPossition;
+		return fieldPosition;
 	}
 
 	public void setFieldPossition(int fieldPossition) {
-		this.fieldPossition = fieldPossition;
+		this.fieldPosition = fieldPossition;
 	}
 	
 	public String toString() {

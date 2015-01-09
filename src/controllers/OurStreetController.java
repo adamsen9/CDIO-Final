@@ -27,7 +27,7 @@ public class OurStreetController extends OwnableController {
 			}
 			
 		} else {
-			if(display.chooseToBuyTerritory(street.getName(), street.getPrice(), player.getName(), street.getRent()) == "Køb"){
+			if(display.chooseToBuyStreet(street.getName(), street.getPrice(), player.getName(), street.getRent()) == "Køb"){
 				buyField(player, display, street);
 			}
 		}
