@@ -24,7 +24,7 @@ public class OurBreweryController extends OwnableController{
 	    			int dieTwo = die.roll();
 	    			display.setDice(dieOne, dieTwo);
 	    			//Jeg udregner hvad spilleren skal betale til ejeren. Dette er øjne*ejet*100
-	    			int rent = laborCamp.getOwner().getNumberOfLaborCampsOwned()*100*(dieOne+dieTwo);
+	    			int rent = laborCamp.getOwner().getNumberOfBreweryOwned()*100*(dieOne+dieTwo);
 	    			//Jeg sender en besked han skal bekræfte for at fortsætte, hvor der står hvad han slog og hvad han skal betale
 	    			display.sendMessage("Du har slået " + (dieOne + dieTwo) + ", og skal betale " + rent + ".");
 	    			//Jeg sender penge fra den aktive spiller til ejeren af feltet. Jeg ved han har penge nok da dette var condition til at komme herned
@@ -34,7 +34,7 @@ public class OurBreweryController extends OwnableController{
 	    }else{
 	    	if(display.chooseToBuyLaborCamp(laborCamp.getName(), laborCamp.getPrice(), player.getName()) == "Køb"){
 	    		if(buyField(player, display, laborCamp)){
-	    			player.addNumberOfLaborCamps();
+	    			player.addNumberOfBrewery();
 	    		}
 	    	}
 	    }
