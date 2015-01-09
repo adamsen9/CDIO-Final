@@ -10,7 +10,7 @@ import controllers.OurJailController;
 
 
 	public class OurChanceController extends FieldController{
-		OurChanceCard[] liste = new OurChanceCard[17];
+		OurChanceCard[] liste = new OurChanceCard[22];
 		private Random rnd = new Random();
 		int FaceValue;
 		OurJailController JailTime = new OurJailController();
@@ -42,7 +42,7 @@ import controllers.OurJailController;
 	}
 	
 	public void putCardOnStack(GUIManager display){
-		FaceValue = (int) rnd.nextInt(17);
+		FaceValue = (int) rnd.nextInt(22);
 		display.setcard(liste[FaceValue].getText());
 		
 	}
