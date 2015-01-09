@@ -16,28 +16,28 @@ import controllers.OurJailController;
 		OurJailController JailTime = new OurJailController();
 		
 	public OurChanceController() {
-		liste[0] = new OurChanceCard("Ryk 2 felter tilbage", "ryk", -2);
-		liste[1] = new OurChanceCard("Ryk 2 felter frem","ryk", 2);
-		liste[2] = new OurChanceCard("Der er kommet voldsomme renter på din vaffelis, betal 1500,", "betal", 1500);
-		liste[3] = new OurChanceCard("DU HAR VUNDET I LOTTO, TILLYKE, modtag 1000", "modtag", 1000);
-		liste[4] = new OurChanceCard("Du har stjålet en cykel og skal i fængsel", "fængsel", 0);
-		liste[5] = new OurChanceCard("Du har fundet en sjælden fugl, og sælger den, modtag 500", "modtag", 500);
-		liste[6] = new OurChanceCard("Du var ude og handle og fandt en forladt pung", "modtag", 600);
-		liste[7] = new OurChanceCard("Du skulle alligevel ikke adoptere en lille asiater, modtag 1000", "modtag", 1000);
-		liste[8] = new OurChanceCard("Du sælger din ene nyrer, til en velhavende kineser, modtag 2000", "modtag", 2000);
-		liste[9] = new OurChanceCard("Du er enelig arving til din griske, gamle, gnier af en tante, modtag 2000", "modtag", 2000);
-		liste[10] = new OurChanceCard("Ryk frem til Strandvejen","Strandvejen", 0);
-		liste[11] = new OurChanceCard("Ryk frem til Rådhuspladsen","Rådhuspladsen", 0);
-		liste[12] = new OurChanceCard("Ryk frem til Østerbro","Østerbrogade", 0);
-		liste[13] = new OurChanceCard("Ryk frem til Start","Start", 0);
-		liste[14] = new OurChanceCard("Ryk frem til Gl. Kongevej","Gl. Kongevej", 0);
-		liste[15] = new OurChanceCard("Ryk frem til Vimmelskaftet","Vimmelskaftet", 0);
-		liste[16] = new OurChanceCard("Ryk frem til Kongens Nytorv","Kongens Nytorv", 0);
-		liste[17] = new OurChanceCard("Du skal til fødselsdag, betal 500,", "betal", 500);
-		liste[18] = new OurChanceCard("Du køber en hundehvalp, betal 500,", "betal", 500);
-		liste[19] = new OurChanceCard("Du skal have fjernet et voldsomt modermærke, betal 1000,", "betal", 1000);
-		liste[20] = new OurChanceCard("Der er kommet en ny Iphone, du bare må have, betal 2000,", "betal", 2000);
-		liste[21] = new OurChanceCard("Din søde tand driver dig til vanvid, slik og søde sager er den eneste udvej, betal 300,", "betal", 300);
+		liste[0] = new OurChanceCard("Ryk 2 felter tilbage.", "ryk", -2);
+		liste[1] = new OurChanceCard("Ryk 2 felter frem.","ryk", 2);
+		liste[2] = new OurChanceCard("Der er kommet voldsomme renter på din vaffelis, betal 1500.", "betal", 1500);
+		liste[3] = new OurChanceCard("DU HAR VUNDET I LOTTO, TILLYKE, modtag 1.000.", "modtag", 1000);
+		liste[4] = new OurChanceCard("Du har stjålet en cykel og skal i fængsel.", "fængsel", 0);
+		liste[5] = new OurChanceCard("Du har fundet en sjælden fugl og sælger den, modtag 500.", "modtag", 500);
+		liste[6] = new OurChanceCard("Du var ude og handle og fandt en forladt pung, modtag 600.", "modtag", 600);
+		liste[7] = new OurChanceCard("Du skulle alligevel ikke adoptere en lille asiater, modtag 1.000.", "modtag", 1000);
+		liste[8] = new OurChanceCard("Du sælger din ene nyre til en velhavende kineser, modtag 2.000.", "modtag", 2000);
+		liste[9] = new OurChanceCard("Du er eneste arving til din griske, gamle gnier af en tante, modtag 2.000.", "modtag", 2000);
+		liste[10] = new OurChanceCard("Ryk frem til Strandvejen.","Strandvejen", 0);
+		liste[11] = new OurChanceCard("Ryk frem til Rådhuspladsen.","Rådhuspladsen", 0);
+		liste[12] = new OurChanceCard("Ryk frem til Østerbrogade.","Østerbrogade", 0);
+		liste[13] = new OurChanceCard("Ryk frem til Start.","Start", 0);
+		liste[14] = new OurChanceCard("Ryk frem til Gl. Kongevej.","Gl. Kongevej", 0);
+		liste[15] = new OurChanceCard("Ryk frem til Vimmelskaftet.","Vimmelskaftet", 0);
+		liste[16] = new OurChanceCard("Ryk frem til Kongens Nytorv.","Kongens Nytorv", 0);
+		liste[17] = new OurChanceCard("Du skal til fødselsdag, betal 500.", "betal", 500);
+		liste[18] = new OurChanceCard("Du køber en hundehvalp, betal 500.", "betal", 500);
+		liste[19] = new OurChanceCard("Du skal have fjernet et voldsomt modermærke, betal 1.000.", "betal", 1000);
+		liste[20] = new OurChanceCard("Der er kommet en ny Iphone, du bare må have, betal 2.000.", "betal", 2000);
+		liste[21] = new OurChanceCard("Din søde tand driver dig til vanvid, slik og søde sager er den eneste udvej, betal 300.", "betal", 300);
 		
 	}
 	
