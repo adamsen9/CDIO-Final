@@ -145,7 +145,7 @@ public class GameBoard {
 	public ArrayList<OurStreet> getAllWithHouses(int id){
 		ArrayList<OurStreet> streetsWithHouses = new ArrayList<OurStreet>();
 		for(int i = 0; i < fields.length; i++){
-			if(fields[i].getType() == "street"){
+			if(fields[i].getType() == "Street"){
 				OurStreet street = (OurStreet) fields[i];
 				if(street.getNumberOfHouses() > 0 && street.getOwner().getId() == id){
 					streetsWithHouses.add(street);

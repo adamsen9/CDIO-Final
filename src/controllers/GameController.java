@@ -152,8 +152,10 @@ public class GameController {
 					}
 				}else if(result == "Sælg hus"){
 					ArrayList<OurStreet> streetsWithHouses = board.getAllWithHouses(activePlayer.getId());
+					System.out.println(streetsWithHouses.size());
 					ArrayList<String> names = new ArrayList<String>();
 					for(int i = 0; i < streetsWithHouses.size(); i++){
+						System.out.println("inside the for loop: " + i);
 						names.add(streetsWithHouses.get(i).getName());
 					}
 					if(names.size() == 0) continue; // skips to next iteration if there is no hosues to remove.
@@ -215,10 +217,10 @@ public class GameController {
 			display.movePlayer(activePlayer.getPrevField(), activePlayer.getField(), activePlayer.getName());
                         
 			//Logik til at kontrollere hvilket felt der er landet på.
-			currentField = board.getField(activePlayer.getField() - 1);
 			boolean[] landOnField = {true, false};
 			do{
-				 landOnField = fieldController[activePlayer.getField() - 1].landOnField(activePlayer, display, currentField, dice);
+				currentField = board.getField(activePlayer.getField() - 1);
+				landOnField = fieldController[activePlayer.getField() - 1].landOnField(activePlayer, display, currentField, dice);
 			} while (landOnField[1]);
 			if(!landOnField[0]){
 				bankruptcy(turn);
