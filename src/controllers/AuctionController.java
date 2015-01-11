@@ -70,8 +70,14 @@ public class AuctionController {
 						choice = GUI.chooseToBid(auctioneers[i].getName(), bid);
 						
 						if(choice.equals("Ja") && auctioneers[i].getBalance() >= bid) {
-							//Spørg om hvor meget
+							
 							bid = GUI.enterBid(bid, auctioneers[i].getBalance());
+							
+							
+							
+							
+							
+							
 							winningBid = bid;
 							auctionWinner = auctioneers[i];
 							
