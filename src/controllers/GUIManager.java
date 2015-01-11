@@ -224,30 +224,16 @@ public class GUIManager {
 	
 	public int enterBid(int bid, int auctioneerBalance) {
 		String input = "";
-		Boolean cinput = true;
 		int newBid = 0;
-		while(true) {
-			do {
-				input = GUI.getUserString("Indtast venligst et bud højere end " + bid);
-				try {
-					newBid = Integer.parseInt(input);
-					if(newBid <= bid) {
-						GUI.getUserButtonPressed("Du skal som minimum give et højere bud end det tidligere bud, der er på " + bid, "Prøv igen");
-					} else
-					if(auctioneerBalance < newBid) {
-						GUI.getUserButtonPressed("Du kan ikke byde mere end du har. Du har " + auctioneerBalance, "Prøv igen");
-					}
-					if(auctioneerBalance > newBid && newBid > bid) {
-						cinput = false;
-					}
-				} catch (NumberFormatException e) {
-				}
-				
-			} while (cinput);
-			break;
+		input = GUI.getUserString("Indtast venligst et bud højere end " + bid);
+		try {
+			newBid = Integer.parseInt(input);
+			
+		} catch (NumberFormatException e) {
 		}
 		return newBid;
 	}
+	
 	public String chooseToBid(String name, int bid) {
 		return GUI.getUserButtonPressed("Det er " + name + "'s tur til at byde. Vil du byde på grunden? Buddet er på " + bid + " kroner.","Ja","Nej");
 	}
