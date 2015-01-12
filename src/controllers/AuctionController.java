@@ -33,7 +33,7 @@ public class AuctionController {
 		}
 		
 		if(bankruptcy == true) {
-			GUI.sendMessage("Der bliver afholdt tvangsauktion af feltet" + field.getName() + ".");
+			GUI.sendMessage("Der bliver afholdt tvangsauktion af feltet " + field.getName() + ".");
 		} else {
 			GUI.sendMessage(activePlayer.getName() + " har valgt ikke at købe feltet. Der bliver afholdt nu auktion af feltet " + field.getName() + " for alle andre spillere.");	
 		}
@@ -42,18 +42,18 @@ public class AuctionController {
 		int newBid = 0;
 		if(field.getPawnedStatus()) {
 			minBid = (int) (field.getPrice()/2);
+			GUI.sendMessage(field.getName() + " er pantsat. Startbuddet ligger på " + minBid+".");
 		} else {
-			GUI.sendMessage(field.getName() + " er ikke pantsat. Startbuddet ligger på " + minBid);
+			GUI.sendMessage(field.getName() + " er ikke pantsat. Startbuddet ligger på " + minBid+".");
 		}
 		for (int i = 0; i < auctioneers.length; i++) {
 			if(auctioneers[i] != null)
 				if(auctioneers[i].getBalance() < minBid) {
-					GUI.sendMessage(auctioneers[i].getName() + " har ikke råd til at byde og udgår automatisk");
+					GUI.sendMessage(auctioneers[i].getName() + " har ikke råd til at byde og udgår automatisk.");
 					auctioneers[i] = null;
 				}
 		}
 		
-		Player highestBidder = null;
 		String choice = "";
 		
 		boolean allBid = false;
@@ -63,29 +63,25 @@ public class AuctionController {
 				
 				if((auctioneers[i] != null)) {
 					if(auctioneers[i].getBalance() <= minBid) {
-						GUI.sendMessage(auctioneers[i].getName() + " har ikke længere råd til at byde på auktionen og er automatisk ude");
+						GUI.sendMessage(auctioneers[i].getName() + " har ikke længere råd til at byde på auktionen og udgår automatisk.");
 						auctioneers[i] = null;
 						bidders--;
 					} else {
 						choice = GUI.chooseToBid(auctioneers[i].getName(), minBid);
 						
 						if(choice.equals("Ja") && auctioneers[i].getBalance() >= minBid) {
-							boolean cinput = false;
 							//Spørg om hvor meget
 							
-							
-
-							
-							
-							while(!cinput) {
+							while(true) {
 								newBid = GUI.enterBid(minBid, auctioneers[i].getBalance());
 								if(newBid <= minBid && !(allBid)) {
-									GUI.sendMessage("Du skal minimum byde over det tidligere bud, prøv igen");
+									GUI.sendMessage("Du skal minimum byde over det tidligere bud, prøv igen.");
 								} else if(auctioneers[i].getBalance() < newBid) {
-									GUI.sendMessage("Du kan ikke byde mere end du allerde har, prøv igen");
+									GUI.sendMessage("Du kan ikke byde et større beløb end du har, prøv igen.");
 								} else if((newBid == minBid && allBid && newBid <= auctioneers[i].getBalance()) || (newBid > minBid && newBid <= auctioneers[i].getBalance())) {
-									winningBid = minBid;
+									winningBid = newBid;
 									auctionWinner = auctioneers[i];
+									break;
 								}
 							}
 							
@@ -113,7 +109,10 @@ public class AuctionController {
 					if(auctionWinner.getId() == auctioneers[i].getId()){
 						//Overdrag grunden til den vindene spiller
 						field.setOwner(auctioneers[i]);
+						OurStreet street = (OurStreet) field;
+						auctionWinner.addToInventory(field.getFieldId(), field.getPrice(), street.getCategory());
 						GUI.setOwner(field.getFieldId(), auctioneers[i].getName());
+						GUI.sendMessage(auctionWinner.getName()+" vandt auktionen af "+field.getName()+" for "+winningBid+".");
 						
 						//Fratræk den vindene spiller sit bud og opdater GUIen
 						auctioneers[i].withdraw(winningBid);
