@@ -74,10 +74,11 @@ public class AuctionController {
 							//Spørg om hvor meget
 							
 							
-							newBid = GUI.enterBid(minBid, auctioneers[i].getBalance());
+
 							
 							
 							while(!cinput) {
+								newBid = GUI.enterBid(minBid, auctioneers[i].getBalance());
 								if(newBid <= minBid && !(allBid)) {
 									GUI.sendMessage("Du skal minimum byde over det tidligere bud, prøv igen");
 								} else if(auctioneers[i].getBalance() < newBid) {
