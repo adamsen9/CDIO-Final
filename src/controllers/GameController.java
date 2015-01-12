@@ -161,7 +161,7 @@ public class GameController {
 					for(int i = 0; i < streetsWithHouses.size(); i++){
 						names[i] = streetsWithHouses.get(i).getName();
 					}
-					if(names.length == 0) continue; // skips to next iteration if there is no hosues to remove.
+					if(names.length == 0) continue; // skips to next iteration if there is no houses to remove.
 					String selectedName = display.chooseToRemoveHouse(names);
 					OurStreet selectedStreet = (OurStreet) board.getFieldWhereName(selectedName);
 					selectedStreet.removeHouse();
@@ -212,8 +212,7 @@ public class GameController {
 					display.rollPayJail();
 					activePlayer.withdraw(1000);
 					activePlayer.setImPrisoned(false);
-					activePlayer.setTimeInJail(0);
-					
+					activePlayer.setTimeInJail(0);	
 				}
 				else{
 					display.rollJail();
