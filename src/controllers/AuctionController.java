@@ -79,7 +79,7 @@ public class AuctionController {
 								} else if(auctioneers[i].getBalance() < newBid) {
 									GUI.sendMessage("Du kan ikke byde et større beløb end du har, prøv igen.");
 								} else if((newBid == minBid && allBid && newBid <= auctioneers[i].getBalance()) || (newBid > minBid && newBid <= auctioneers[i].getBalance())) {
-									winningBid = minBid;
+									winningBid = newBid;
 									auctionWinner = auctioneers[i];
 									break;
 								}
