@@ -35,7 +35,7 @@ public class AuctionController {
 		if(bankruptcy == true) {
 			GUI.sendMessage("Der bliver afholdt tvangsauktion af feltet" + field.getName() + ".");
 		} else {
-			GUI.sendMessage("Der bliver afholdt auktion af feltet " + field.getName() + ".");	
+			GUI.sendMessage(activePlayer.getName() + " har valgt ikke at købe feltet. Der bliver afholdt nu auktion af feltet " + field.getName() + " for alle andre spillere.");	
 		}
 		
 		int minBid = field.getPrice();
