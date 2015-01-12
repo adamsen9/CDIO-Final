@@ -24,7 +24,7 @@ public class OurShippingController extends OwnableController {
 			}
 			
 		} else{
-			if(display.chooseToBuyFleet(fleet.getName(), fleet.getPrice(), player.getName()) == "Køb"){
+			if(display.chooseToBuyShipping(fleet.getName(), fleet.getPrice(), player.getName()) == "Køb"){
 				if(buyField(player, display, fleet)){
 					player.addNumberOfShippingOwned();
 				}

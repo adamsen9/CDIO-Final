@@ -28,7 +28,7 @@ public class GameBoard {
 		fields[16] = new OurStreet(new int[] {300, 1400, 4000, 11000, 15000, 19000}, 3600, 2000, "Bernstorffsvej", 17, 17, new Color (195, 195, 195),4); // Grå
 		fields[17] = new OurChance(18);
 		fields[18] = new OurStreet(new int[] {300, 1400, 4000, 11000, 15000, 19000}, 3600, 2000, "Hellerupvej", 19, 19, new Color (195, 195, 195),4);
-		fields[19] = new OurStreet(new int[] {350, 1600, 4400, 12000, 16000, 20000}, 4000, 2000, "Strandvej", 20, 20, new Color (195, 195, 195),4);
+		fields[19] = new OurStreet(new int[] {350, 1600, 4400, 12000, 16000, 20000}, 4000, 2000, "Strandvejen", 20, 20, new Color (195, 195, 195),4);
 		fields[20] = new OurParking(4000, "Den Danske Bank Parkering", 21, 21);
 		fields[21] = new OurStreet(new int[] {350, 1800, 5000, 14000, 17500, 21000}, 4400, 3000, "Trianglen", 22, 22, new Color (255, 0, 0),5); // Rød
 		fields[22] = new OurChance(23);

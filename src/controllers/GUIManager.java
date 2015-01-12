@@ -167,21 +167,21 @@ public class GUIManager {
 		GUI.getUserButtonPressed("\n\n" + message, "Ok");
 	}
 	
-	public String chooseToBuyFleet(String name, int price, String playerName){
+	public String chooseToBuyShipping(String name, int price, String playerName){
 		if(state == "test"){
 			return handel;
 		}
 		return GUI.getUserButtonPressed("\n" + playerName + " er landet på flåden " + name + ". Den er ikke ejet.\nVil du købe " + name + "? Det koster " + price + " kroner.", "Køb", "Afslå");
 	}
 	
-	public String chooseToBuyTerritory(String name, int price, String playerName, int rent){
+	public String chooseToBuyStreet(String name, int price, String playerName, int rent){
 		if(state == "test"){
 			return handel;
 		}
 		return GUI.getUserButtonPressed("\n" + playerName  + " er landet på grunden " + name + ". Den er ikke ejet.\nVil du købe " + name + "? Det koster " + price + " kroner, lejen er på " + rent+".", "Køb", "Afslå");
 	}
 	
-	public String chooseToBuyLaborCamp(String name, int price, String playerName){
+	public String chooseToBuyBrewery(String name, int price, String playerName){
 		if(state == "test"){
 			return handel;
 		}
@@ -224,30 +224,16 @@ public class GUIManager {
 	
 	public int enterBid(int bid, int auctioneerBalance) {
 		String input = "";
-		Boolean cinput = true;
 		int newBid = 0;
-		while(true) {
-			do {
-				input = GUI.getUserString("Indtast venligst et bud højere end " + bid);
-				try {
-					newBid = Integer.parseInt(input);
-					if(newBid <= bid) {
-						GUI.getUserButtonPressed("Du skal som minimum give et højere bud end det tidligere bud, der er på " + bid, "Prøv igen");
-					} else
-					if(auctioneerBalance < newBid) {
-						GUI.getUserButtonPressed("Du kan ikke byde mere end du har. Du har " + auctioneerBalance, "Prøv igen");
-					}
-					if(auctioneerBalance > newBid && newBid > bid) {
-						cinput = false;
-					}
-				} catch (NumberFormatException e) {
-				}
-				
-			} while (cinput);
-			break;
+		input = GUI.getUserString("Indtast venligst et bud højere end " + bid);
+		try {
+			newBid = Integer.parseInt(input);
+			
+		} catch (NumberFormatException e) {
 		}
 		return newBid;
 	}
+	
 	public String chooseToBid(String name, int bid) {
 		return GUI.getUserButtonPressed("Det er " + name + "'s tur til at byde. Vil du byde på grunden? Buddet er på " + bid + " kroner.","Ja","Nej");
 	}

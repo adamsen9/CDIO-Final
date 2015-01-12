@@ -18,6 +18,7 @@ public class GameController {
 	private OurTaxController taxController = new OurTaxController();
 	private OurJailController jailController = new OurJailController();
 	private OurChanceController chanceController = new OurChanceController();
+	private AuctionController auctionController = new AuctionController();
 	private FieldController[] fieldController = {
 			startController, //0
 			streetController, //1
@@ -127,6 +128,9 @@ public class GameController {
 				display.winning(winningPlayer.getName());
 				break;
 			}
+			
+			
+			
 			while (true){
 				String result = display.roll(activePlayer.getName());
 				if(result == "Køb hus/hotel"){
@@ -268,10 +272,10 @@ public class GameController {
 		int[] playerInventory = activePlayer.getInventory();
 		for (int i = 0; i < playerInventory.length; i++){
 			if (playerInventory[i] != 0){
-				Ownable currentOwnable = (Ownable) board.getField(playerInventory[i]-1);
-				currentOwnable.setOwner(null);
+				//When bankruptcy occurs all owned fields are put up for auction
 				display.removeOwner(playerInventory[i]);
-			}
+				auctionController.auction(display, players, activePlayer, (Ownable) board.getField(playerInventory[i]-1),true);
+	}
 		}
 		activePlayer.resetInventory();
 		display.removePlayer(activePlayer.getName());
