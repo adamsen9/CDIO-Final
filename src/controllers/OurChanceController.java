@@ -104,7 +104,7 @@ import controllers.OurJailController;
 			
 		case ("Østerbrogade"):
 			display.sendMessage(liste[FaceValue].getText());
-			player.setField(40, player.getField());
+			player.setField(24, player.getField());
 			display.movePlayer(field.getFieldId(),1, player.getName());
 			returnValue[1] = true;
 			break;
