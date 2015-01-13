@@ -27,8 +27,11 @@ public class OurStreetController extends OwnableController {
 			}
 			
 		} else {
-			if(display.chooseToBuyStreet(street.getName(), street.getPrice(), player.getName(), street.getRent()) == "Køb"){
+			String choice = display.chooseToBuyStreet(street.getName(), street.getPrice(), player.getName(), street.getRent());
+			if(choice == "Køb"){
 				buyField(player, display, street);
+			} else if(choice == "Afslå") {
+				//Gennemfør auktion
 			}
 		}
 		return returnValue;

@@ -24,10 +24,13 @@ public class OurShippingController extends OwnableController {
 			}
 			
 		} else{
-			if(display.chooseToBuyShipping(fleet.getName(), fleet.getPrice(), player.getName()) == "Køb"){
+			String choice = display.chooseToBuyShipping(fleet.getName(), fleet.getPrice(), player.getName());
+			if(choice == "Køb"){
 				if(buyField(player, display, fleet)){
 					player.addNumberOfShippingOwned();
 				}
+			} else if(choice == "Afslå") {
+				//Gennemfør auktion
 			}
 		}
 		return returnValue;

@@ -252,6 +252,18 @@ public class GameController {
 			do{
 				currentField = board.getField(activePlayer.getField() - 1);
 				landOnField = fieldController[activePlayer.getField() - 1].landOnField(activePlayer, display, currentField, dice);
+
+
+				
+				//Auktion gennemføres
+				if(currentField.getType() == "Street" || currentField.getType() == "Brewery" || currentField.getType() == "Shipping") {
+					Ownable fieldCheck = null;
+					fieldCheck = (Ownable) board.getField(activePlayer.getField()-1);
+					if(!(fieldCheck.isOwned())) {
+						auctionController.auction(display, players, activePlayer, (Ownable) board.getField(activePlayer.getField()-1), false);
+					}
+				}
+				
 			} while (landOnField[1]);
 			if(!landOnField[0]){
 				bankruptcy(turn);
@@ -266,6 +278,7 @@ public class GameController {
 				if (players[i] == null) continue;
 				display.updateBalance(players[i].getName(), players[i].getBalance());
 			}
+			
 		}	
 	}		
 	private void bankruptcy(int turn){

@@ -32,11 +32,15 @@ public class OurBreweryController extends OwnableController{
 	    			return returnValue;
 	    	}
 	    }else{
-	    	if(display.chooseToBuyBrewery(brewery.getName(), brewery.getPrice(), player.getName()) == "Køb"){
+	    	String choice = display.chooseToBuyBrewery(brewery.getName(), brewery.getPrice(), player.getName());
+	    	if(choice == "Køb"){
 	    		if(buyField(player, display, brewery)){
 	    			player.addNumberOfBrewery();
 	    		}
-	    	}
+
+	    	} else if(choice == "Afslå") {
+    			//Gennemfør auktion
+    		}
 	    }
 		return returnValue;
 	}
