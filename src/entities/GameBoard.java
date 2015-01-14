@@ -165,9 +165,9 @@ public class GameBoard {
 				if(numberOfHousesZero == numberOfHousesOne){
 					streetsWithHouses.add(categoryFields.get(0));
 					streetsWithHouses.add(categoryFields.get(1));
-				} else if(numberOfHousesZero > numberOfHousesOne){
-					streetsWithHouses.add(categoryFields.get(1));
 				} else if(numberOfHousesZero < numberOfHousesOne){
+					streetsWithHouses.add(categoryFields.get(1));
+				} else if(numberOfHousesZero > numberOfHousesOne){
 					streetsWithHouses.add(categoryFields.get(0));
 				}
 			} else if(categoryFields.size() == 3){
