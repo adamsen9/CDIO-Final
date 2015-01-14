@@ -142,16 +142,69 @@ public class GameBoard {
 		return buildableFields;
 	}
 	
-	public ArrayList<OurStreet> getAllWithHouses(int id){
+	public ArrayList<OurStreet> getAllWithSellableHouses(int id){
 		ArrayList<OurStreet> streetsWithHouses = new ArrayList<OurStreet>();
-		for(int i = 0; i < fields.length; i++){
-			if(fields[i].getType() == "Street"){
-				OurStreet street = (OurStreet) fields[i];
-				if(street.getNumberOfHouses() > 0 && street.getOwner().getId() == id){
-					streetsWithHouses.add(street);
+		for(int i = 1; i <= 8; i++){
+			ArrayList<OurStreet> categoryFields = getAllInCategory(i-1);
+			int counter = 0;
+			System.out.println(categoryFields.size());
+			for(int j = 0; j < categoryFields.size(); j++){
+				System.out.println(categoryFields.get(j).getName());
+				if(categoryFields.get(j).isOwned()){
+					if(categoryFields.get(j).getOwner().getId() == id){
+						counter++;
+					}
+				}
+			}
+			if (counter != categoryFields.size()) continue; // skips this category if the player doens't own all streets in it
+			// Checks if a field is allowed to be build on.
+			if(categoryFields.size() == 2){
+				int numberOfHousesZero = categoryFields.get(0).getNumberOfHouses();
+				int numberOfHousesOne = categoryFields.get(1).getNumberOfHouses();
+				if(numberOfHousesZero == 0 && numberOfHousesOne == 0) continue; // continues if there is no houses.
+				if(numberOfHousesZero == numberOfHousesOne){
+					streetsWithHouses.add(categoryFields.get(0));
+					streetsWithHouses.add(categoryFields.get(1));
+				} else if(numberOfHousesZero > numberOfHousesOne){
+					streetsWithHouses.add(categoryFields.get(1));
+				} else if(numberOfHousesZero < numberOfHousesOne){
+					streetsWithHouses.add(categoryFields.get(0));
+				}
+			} else if(categoryFields.size() == 3){
+				int numberOfHousesZero = categoryFields.get(0).getNumberOfHouses();
+				int numberOfHousesOne = categoryFields.get(1).getNumberOfHouses();
+				int numberOfHousesTwo = categoryFields.get(2).getNumberOfHouses();
+				if(numberOfHousesZero == 0 && numberOfHousesOne == 0 && numberOfHousesTwo == 0) continue;
+				if(numberOfHousesZero == numberOfHousesOne && numberOfHousesZero == numberOfHousesTwo){
+					streetsWithHouses.add(categoryFields.get(0));
+					streetsWithHouses.add(categoryFields.get(1));
+					streetsWithHouses.add(categoryFields.get(2));
+				} else if(numberOfHousesZero == numberOfHousesOne && numberOfHousesZero < numberOfHousesTwo){
+					streetsWithHouses.add(categoryFields.get(2));
+				} else if(numberOfHousesZero < numberOfHousesOne && numberOfHousesZero == numberOfHousesTwo){
+					streetsWithHouses.add(categoryFields.get(1));
+				} else if(numberOfHousesZero < numberOfHousesOne && numberOfHousesZero < numberOfHousesTwo){
+					streetsWithHouses.add(categoryFields.get(1));
+					streetsWithHouses.add(categoryFields.get(2));
+				} else if(numberOfHousesZero > numberOfHousesOne && numberOfHousesOne == numberOfHousesTwo){
+					streetsWithHouses.add(categoryFields.get(0));
+				} else if(numberOfHousesZero > numberOfHousesOne && numberOfHousesOne < numberOfHousesTwo){
+					streetsWithHouses.add(categoryFields.get(0));
+					streetsWithHouses.add(categoryFields.get(2));
+				} else if(numberOfHousesZero > numberOfHousesTwo && numberOfHousesOne > numberOfHousesTwo){
+					streetsWithHouses.add(categoryFields.get(0));
+					streetsWithHouses.add(categoryFields.get(1));
 				}
 			}
 		}
+		//for(int i = 0; i < fields.length; i++){
+		//	if(fields[i].getType() == "Street"){
+		//		OurStreet street = (OurStreet) fields[i];
+		//		if(street.getNumberOfHouses() > 0 && street.getOwner().getId() == id){
+		//			streetsWithHouses.add(street);
+		//		}
+		//	}
+		//}
 		return streetsWithHouses;
 	}
 	
