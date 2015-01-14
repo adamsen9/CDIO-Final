@@ -173,7 +173,9 @@ public class GameController {
 					if(streets == null || streets.size() == 0) continue;
 					String[] names = new String[streets.size()];
 					for(int i = 0; i < streets.size(); i++){
-						names[i] = streets.get(i).getName();
+						if(streets.get(i).getPawnedStatus()){
+							names[i] = streets.get(i).getName();
+						}
 					}
 					String selectedName = display.chooseToPawnStreet(names);
 					OurStreet selectedStreet = (OurStreet) board.getFieldWhereName(selectedName);
