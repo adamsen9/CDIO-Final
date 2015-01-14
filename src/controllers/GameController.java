@@ -101,12 +101,15 @@ public class GameController {
 //			display.addPlayer(players[i].getName(), players[i].getBalance(), colors[i]);
 //		}
 		
-		numberOfPlayers = 2;
+		numberOfPlayers = 3;
 		players[0] = new Player(0, "Jens");
 		display.addPlayer("Jens", 30000, colors[0]);
 		
 		players[1] = new Player(1, "Mogens");
 		display.addPlayer("Mogens", 30000, colors[1]);
+		
+		players[2] = new Player(2, "Karsten");
+		display.addPlayer("Karsten", 30000, colors[2]);
 		
 	
 		//loop er får vores spil til at køre.
@@ -263,7 +266,6 @@ public class GameController {
 						auctionController.auction(display, players, activePlayer, (Ownable) board.getField(activePlayer.getField()-1), false);
 					}
 				}
-				
 			} while (landOnField[1]);
 			if(!landOnField[0]){
 				bankruptcy(turn);

@@ -39,7 +39,7 @@ public class AuctionController {
 		}
 		
 		int minBid = field.getPrice();
-		int newBid = 0;
+		int newBid = minBid;
 		if(field.getPawnedStatus()) {
 			minBid = (int) (field.getPrice()/2);
 			GUI.sendMessage(field.getName() + " er pantsat. Startbuddet ligger på " + minBid+".");
@@ -60,6 +60,9 @@ public class AuctionController {
 		outerloop:
 		while(true) {
 			for(int i = 0; i < auctioneers.length; i++) {
+				if(allBid && bidders <= 1) {
+					break outerloop;
+				}
 				
 				if((auctioneers[i] != null)) {
 					if(auctioneers[i].getBalance() <= minBid) {
@@ -80,6 +83,7 @@ public class AuctionController {
 									GUI.sendMessage("Du kan ikke byde et større beløb end du har, prøv igen.");
 								} else if((newBid == minBid && allBid && newBid <= auctioneers[i].getBalance()) || (newBid > minBid && newBid <= auctioneers[i].getBalance())) {
 									winningBid = newBid;
+									
 									auctionWinner = auctioneers[i];
 									break;
 								}
@@ -92,9 +96,8 @@ public class AuctionController {
 						}
 					}
 				}
-				if(allBid && bidders <= 1) {
-					break outerloop;
-				}
+
+				minBid = newBid;
 			}
 			allBid = true;
 		}
