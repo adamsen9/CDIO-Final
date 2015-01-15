@@ -140,19 +140,19 @@ import controllers.OurJailController;
 			display.sendMessage(liste[FaceValue].getText());
 			moveShipping = player.getField();
 			if (moveShipping>6 && moveShipping<16){
-				player.setField(16);
+				player.setField(16,field.getFieldId());
 				display.movePlayer(field.getFieldId(),16, player.getName());
 				}
 			else if (moveShipping>16 && moveShipping<26){
-				player.setField(26);
+				player.setField(26,field.getFieldId());
 				display.movePlayer(field.getFieldId(),26, player.getName());
 				}
 			else if (moveShipping>26 && moveShipping<36){
-				player.setField(36);
+				player.setField(36,field.getFieldId());
 				display.movePlayer(field.getFieldId(),36, player.getName());
 				}
 			else {
-				player.setField(6);
+				player.setField(6,field.getFieldId());
 				display.movePlayer(field.getFieldId(),6, player.getName());
 				}
 		
