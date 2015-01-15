@@ -111,8 +111,14 @@ public class AuctionController {
 					if(auctionWinner.getId() == auctioneers[i].getId()){
 						//Overdrag grunden til den vindene spiller
 						field.setOwner(auctioneers[i]);
-						OurStreet street = (OurStreet) field;
-						auctionWinner.addToInventory(field.getFieldId(), field.getPrice(), street.getCategory());
+						
+						if(field.getType() == "Street"){
+							OurStreet street = (OurStreet) field;
+							auctionWinner.addToInventory(field.getFieldId(), field.getPrice(), street.getCategory());
+						} else {
+							auctionWinner.addToInventory(field.getFieldId(), field.getPrice());
+						}
+						
 						GUI.setOwner(field.getFieldId(), auctioneers[i].getName());
 						GUI.sendMessage(auctionWinner.getName()+" vandt auktionen af "+field.getName()+" for "+winningBid+".");
 						
