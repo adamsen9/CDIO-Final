@@ -1,7 +1,6 @@
 package controllers;
 import java.awt.Color;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import entities.Die;
 import entities.GameBoard;
@@ -68,7 +67,6 @@ public class GameController {
 	private Player players[];
 	private Color colors[];
 	private GUIManager display;
-	private String name;
 	private boolean DTurn = false;
 	
 	public GameController(){

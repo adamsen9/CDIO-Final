@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import entities.GameBoard;
 import fields.*;
 import boundaryToMatador.*;
-import boundaryToMatador.Chance.Builder;
 
 public class GUIManager {
 	String state;
