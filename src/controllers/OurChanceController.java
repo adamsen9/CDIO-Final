@@ -66,6 +66,7 @@ import controllers.OurJailController;
 			//vi tager dine penge, aktive spiller
 			returnValue[0] = player.withdraw(liste[FaceValue].getAmount());
 			// vi har returnValue med her, da han teknisk set godt kan tabe ved at betale.
+			display.updateBalance(player.getName(), player.getBalance());
 			break;
 			
 		case ("ryk"):
@@ -73,12 +74,14 @@ import controllers.OurJailController;
 			display.movePlayer(field.getFieldId(), field.getFieldId()+liste[FaceValue].getAmount(), player.getName());
 			player.move(liste[FaceValue].getAmount());
 			returnValue[1] = true;
+			display.updateBalance(player.getName(), player.getBalance());
 			break;
 			
 		case ("modtag"):
 			display.sendMessage(liste[FaceValue].getText());
 			//vi giver dig penge, aktive spiller
 			player.deposit(liste[FaceValue].getAmount());
+			display.updateBalance(player.getName(), player.getBalance());
 			break;
 			
 			
@@ -92,6 +95,7 @@ import controllers.OurJailController;
 			player.setField(20, player.getField());
 			display.movePlayer(field.getFieldId(),20, player.getName());			
 			returnValue[1] = true;
+			display.updateBalance(player.getName(), player.getBalance());
 			break;
 			
 		case ("Rådhuspladsen"):
@@ -99,6 +103,7 @@ import controllers.OurJailController;
 			player.setField(40, player.getField());
 			display.movePlayer(field.getFieldId(),40, player.getName());			
 			returnValue[1] = true;
+			display.updateBalance(player.getName(), player.getBalance());
 			break;
 			
 		case ("Østerbrogade"):
@@ -106,6 +111,7 @@ import controllers.OurJailController;
 			player.setField(24, player.getField());
 			display.movePlayer(field.getFieldId(),1, player.getName());
 			returnValue[1] = true;
+			display.updateBalance(player.getName(), player.getBalance());
 			break;
 			
 		case ("Start"):
@@ -113,6 +119,7 @@ import controllers.OurJailController;
 			player.setField(1, player.getField());
 			display.movePlayer(field.getFieldId(),1, player.getName());
 			returnValue[1] = true;
+			display.updateBalance(player.getName(), player.getBalance());
 			break;
 			
 		case ("Gl. Kongevej"):
@@ -120,6 +127,7 @@ import controllers.OurJailController;
 			player.setField(15, player.getField());
 			display.movePlayer(field.getFieldId(),15, player.getName());
 			returnValue[1] = true;
+			display.updateBalance(player.getName(), player.getBalance());
 			break;
 			
 		case ("Vimmelskaftet"):
@@ -127,6 +135,7 @@ import controllers.OurJailController;
 			player.setField(33, player.getField());
 			display.movePlayer(field.getFieldId(),33, player.getName());
 			returnValue[1] = true;
+			display.updateBalance(player.getName(), player.getBalance());
 			break;
 			
 		case ("Kongens Nytorv"):
@@ -134,6 +143,7 @@ import controllers.OurJailController;
 			player.setField(28, player.getField());
 			display.movePlayer(field.getFieldId(),28, player.getName());
 			returnValue[1] = true;
+			display.updateBalance(player.getName(), player.getBalance());
 			break;
 			
 		case ("nærmeste rederi"):
@@ -157,6 +167,7 @@ import controllers.OurJailController;
 				}
 		
 			returnValue[1] = true;
+			display.updateBalance(player.getName(), player.getBalance());
 			break;
 // Spillerens bil flyttes frem til nærmeste rederi, hvorpå landonfield aktiveres...
 		}
