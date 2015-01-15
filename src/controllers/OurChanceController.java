@@ -1,5 +1,4 @@
 package controllers;
-import   java.lang.Math.*;
 import java.util.Random;
 
 import entities.Die;
