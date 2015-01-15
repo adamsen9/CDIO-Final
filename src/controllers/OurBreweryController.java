@@ -18,7 +18,7 @@ public class OurBreweryController extends OwnableController{
 	    if(brewery.isOwned()){
 	    	if(!isOwner(player, brewery)){
 	    			//Jeg sender en besked han skal bekræfte for at fortsætte, hvor der står hvilket felt han har landt på og hvad der skal ske
-	    			display.sendMessage(player.getName() + "er landet på " + brewery.getName() + "og skal slå med tegningerne. Der betales 100*øjne*ejet Labor Camps.");
+	    			display.sendMessage(player.getName() + " er landet på " + brewery.getName() + " og skal slå med tegningerne. Der betales 100*øjne*ejet bryggerier.");
 	    			//Jeg slår med 2 terninger, og viser dette i grafikken
 	    			int dieOne = die.roll();
 	    			int dieTwo = die.roll();
