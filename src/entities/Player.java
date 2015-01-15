@@ -17,6 +17,7 @@ public class Player{
 	private int wealthOfFieldsOwned = 0;
 	private int timeInJail = 0;
 	private boolean imPrisoned;
+	private int houseValue = 0;
 	
 	public Player() {
 		this.name = "DefaultPlayer";
@@ -150,7 +151,7 @@ public class Player{
 		this.wealthOfFieldsOwned += fieldPrice;
 	}
 	public int getTotalAssets() {
-		int totalAssets = acc.getBalance() + wealthOfFieldsOwned;
+		int totalAssets = acc.getBalance() + wealthOfFieldsOwned + houseValue;
 		return totalAssets;
 	}
 	
@@ -159,6 +160,7 @@ public class Player{
 			this.inventory[i] = 0;
 		}
 		this.numberOfFieldsOwned = 0;
+		this.wealthOfFieldsOwned = 0;
 	}
 	
 	// methods for other classes to use when using account.
@@ -203,4 +205,19 @@ public class Player{
 		ownedInCategory[index] = value;
 	}
 
+	public int getHouseValue() {
+		return houseValue;
+	}
+
+	public void setHouseValue(int houseValue) {
+		this.houseValue = houseValue;
+	}
+
+	public void increaseHouseValue(int value){
+		this.houseValue += value;
+	}
+	
+	public void decreaseHouseValue(int value){
+		this.houseValue -= value;
+	}
 }

@@ -151,6 +151,7 @@ public class GameController {
 							continue;
 						} else{
 							activePlayer.withdraw(placement.getHousePrice());
+							activePlayer.increaseHouseValue(placement.getHousePrice());
 							placement.addHouse();
 							display.updateHouses(placement.getFieldId(), placement.getNumberOfHouses());
 							display.updateBalance(activePlayer.getName(), activePlayer.getBalance());
@@ -167,6 +168,7 @@ public class GameController {
 					OurStreet selectedStreet = (OurStreet) board.getFieldWhereName(selectedName);
 					selectedStreet.removeHouse();
 					activePlayer.deposit(selectedStreet.getHousePrice()/2);
+					activePlayer.decreaseHouseValue(selectedStreet.getHousePrice());
 					display.updateHouses(selectedStreet.getFieldId(), selectedStreet.getNumberOfHouses());
 					display.updateBalance(activePlayer.getName(), activePlayer.getBalance());
 				}else if(result == "Pantsæt grund"){
