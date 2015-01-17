@@ -91,9 +91,7 @@ public class GameBoard {
 		for(int i = 1; i <= 8; i++){
 			ArrayList<OurStreet> categoryFields = getAllInCategory(i-1);
 			int counter = 0;
-			System.out.println(categoryFields.size());
 			for(int j = 0; j < categoryFields.size(); j++){
-				System.out.println(categoryFields.get(j).getName());
 				if(categoryFields.get(j).isOwned()){
 					if(categoryFields.get(j).getOwner().getId() == playerId){
 						counter++;
@@ -147,9 +145,7 @@ public class GameBoard {
 		for(int i = 1; i <= 8; i++){
 			ArrayList<OurStreet> categoryFields = getAllInCategory(i-1);
 			int counter = 0;
-			System.out.println(categoryFields.size());
 			for(int j = 0; j < categoryFields.size(); j++){
-				System.out.println(categoryFields.get(j).getName());
 				if(categoryFields.get(j).isOwned()){
 					if(categoryFields.get(j).getOwner().getId() == id){
 						counter++;
