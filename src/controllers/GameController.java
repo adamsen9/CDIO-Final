@@ -126,7 +126,6 @@ public class GameController {
 				if(result == "Køb hus/hotel"){
 					ArrayList<String> owned = new ArrayList<String>();
 					ArrayList<OurStreet> allBuildable = board.getBuildableFields(activePlayer.getId());
-					System.out.println(allBuildable.size());
 					for(int j = 0; j < allBuildable.size(); j++){
 						if(allBuildable.get(j).getNumberOfHouses() < 5){
 							owned.add(allBuildable.get(j).getName());
@@ -176,7 +175,6 @@ public class GameController {
 					display.updateBalance(activePlayer.getName(), activePlayer.getBalance());
 				}else if(result == "Fjern pantsætning"){
 					ArrayList<OurStreet> streets = board.getPawnedStreets(activePlayer.getId());
-					System.out.println(streets.size());
 					if(streets == null || streets.size() == 0) continue;
 					String[] names = new String[streets.size()];
 					for(int i = 0; i < streets.size(); i++){
