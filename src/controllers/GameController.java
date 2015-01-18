@@ -92,23 +92,12 @@ public class GameController {
 		
 		
 		//Vælg antal spillere
-		//numberOfPlayers = display.getNumberOfPlayers();
-//		for(int i = 0; i < numberOfPlayers; i++){
-//			name = display.getPlayerName(i+1);
-//			players[i] = new Player(i, name);
-//			display.addPlayer(players[i].getName(), players[i].getBalance(), colors[i]);
-//		}
-		
-		numberOfPlayers = 3;
-		players[0] = new Player(0, "Jens");
-		display.addPlayer("Jens", 30000, colors[0]);
-		
-		players[1] = new Player(1, "Mogens");
-		display.addPlayer("Mogens", 30000, colors[1]);
-		
-		players[2] = new Player(2, "Karsten");
-		display.addPlayer("Karsten", 30000, colors[2]);
-		
+		numberOfPlayers = display.getNumberOfPlayers();
+		for(int i = 0; i < numberOfPlayers; i++){
+			String name = display.getPlayerName(i+1);
+			players[i] = new Player(i, name);
+			display.addPlayer(players[i].getName(), players[i].getBalance(), colors[i]);
+		}		
 	
 		//loop er får vores spil til at køre.
 		while(true){
@@ -243,10 +232,8 @@ public class GameController {
 					}
 				}
 			}
-//			display.setDice(dieOne, dieTwo);
-//			activePlayer.move(dieOne+dieTwo);
-			activePlayer.move(display.getUserInteger(activePlayer.getName() +", indtast hvad du vil slå:"));
-			display.updateBalance(activePlayer.getName(), activePlayer.getBalance());
+			display.setDice(dieOne, dieTwo);
+			activePlayer.move(dieOne+dieTwo);
 			
 			//Spiller bevæger sig
 			display.movePlayer(activePlayer.getPrevField(), activePlayer.getField(), activePlayer.getName());
