@@ -175,7 +175,7 @@ public class GameController {
 					display.updateBalance(activePlayer.getName(), activePlayer.getBalance());
 				}else if(result == "Fjern pantsætning"){
 					ArrayList<OurStreet> streets = board.getPawnedStreets(activePlayer.getId());
-					if(streets == null || streets.size() == 0) continue;
+					if(streets == null || streets.size() == 0) continue; // skips to the next iteration
 					String[] names = new String[streets.size()];
 					for(int i = 0; i < streets.size(); i++){
 						names[i] = streets.get(i).getName();
