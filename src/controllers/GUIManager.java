@@ -123,7 +123,7 @@ public class GUIManager {
 		if(state == "test"){
 			return 5;
 		}
-		int numberOfPlayers = Integer.parseInt(GUI.getUserButtonPressed("Vælg hvor mange spillere der ønskes:", "2", "3", "4", "5", "6"));
+		int numberOfPlayers = Integer.parseInt(GUI.getUserButtonPressed("Vælg hvor mange spillere der ønskes:", "3", "4", "5", "6"));
 		return numberOfPlayers;
 	}
 	
